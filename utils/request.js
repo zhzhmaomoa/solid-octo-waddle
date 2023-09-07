@@ -1,6 +1,18 @@
-const baseUrl = 'http://localhost:80';
-const dev = 0;
-export async function netQuery(method = 'GET', path, success, fail, data) {
+const baseUrl = 'http://localhost:80/api';
+const dev = 1;
+const fail = (err)=>{
+  console.log(err);
+}
+export async function netQuery(method = 'GET', path, success1, data) {
+  const success = (res)=>{
+    console.log(res,"res");
+    const {data} = res;
+    if(data.code){
+      console.log(data.err);
+    }else{
+      success1(data.data);
+    }
+  }
   //服务器在本地环境
   if (dev) {
     switch (method) {
@@ -36,7 +48,7 @@ export async function netQuery(method = 'GET', path, success, fail, data) {
       switch (method) {
         case 'GET':
           that.cloud.callContainer({
-            path,// 填入业务自定义路径和参数，根目录，就是 / 
+            path:'/api'+path,// 填入业务自定义路径和参数，根目录，就是 / 
             method, // 按照自己的业务开发，选择对应的方法
             header: {
               'X-WX-SERVICE': 'express-lbcw', // xxx中填入服务名称（微信云托管 - 服务管理 - 服务列表 - 服务名称）
@@ -47,7 +59,7 @@ export async function netQuery(method = 'GET', path, success, fail, data) {
           break;
         default:
           that.cloud.callContainer({
-            path,// 填入业务自定义路径和参数，根目录，就是 / 
+            path:'/api'+path,// 填入业务自定义路径和参数，根目录，就是 / 
             method, // 按照自己的业务开发，选择对应的方法
             header: {
               'X-WX-SERVICE': 'express-lbcw', // xxx中填入服务名称（微信云托管 - 服务管理 - 服务列表 - 服务名称）

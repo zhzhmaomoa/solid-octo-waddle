@@ -9,16 +9,15 @@ Page({
     this.getMembers();
   },
   getMembers(){
-    app.netQuery('GET','/api/count',(res)=>{
-      console.log(res);
+    app.netQuery('GET','/count',(res)=>{
+      console.log(res,'data');
       this.setData({
-        members:res.data.data
+        members:res
       })
-    },(err)=>{
-      console.log(err);
-    });
+    },);
   },
   handleSubmit(event){
     console.log(event);
+    app.netQuery('POST','/members',)
   }
 })
