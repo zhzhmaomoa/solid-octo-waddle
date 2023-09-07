@@ -1,16 +1,16 @@
 const baseUrl = 'http://localhost:80/api';
 const dev = 1;
-const fail = (err)=>{
-  console.log(err);
-}
-export async function netQuery(method = 'GET', path, success1, data) {
+export async function netQuery(method = 'GET', path, callback, data) {
+  const fail = (err)=>{
+    console.log(err);
+  }
   const success = (res)=>{
     console.log(res,"res");
     const {data} = res;
     if(data.code){
       console.log(data.err);
     }else{
-      success1(data.data);
+      callback(data.data);
     }
   }
   //服务器在本地环境
