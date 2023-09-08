@@ -1,17 +1,23 @@
-const baseUrl = 'http://localhost:80/api';
+const baseUrl = 'http://localhost:8080/api';
 const dev = 1;
 export async function netQuery(method = 'GET', path, callback, data) {
   const fail = (err)=>{
     console.log(err);
+    wx.showToast({
+      title:err,
+      icon:'error'
+    })
   }
   const success = (res)=>{
-    console.log(res,"res");
-    const {data} = res;
-    if(data.code){
-      console.log(data.err);
-    }else{
-      callback(data.data);
-    }
+    callback(new Promise((resolve,reject)=>{
+      // console.log(res,"res");
+      const {data} = res;
+      if(data.code){
+        reject(data);
+      }else{
+        resolve(data.data);
+      }
+    }))
   }
   //服务器在本地环境
   if (dev) {
