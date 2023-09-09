@@ -1,39 +1,16 @@
-.head{
-  padding: 5vh 0;
+.container{
+  display:flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: space-around;
 }
-.add-btn{
-  background-color: #001d3d;
-  color:white;
-}
-.table{
-  height:85vh;
-  width: 100vw;
-}
-.tr{
-  border-bottom: 0.2vw solid #001d3d;
-  padding: 0 5vw;
+.item{
+  width: 61.8vw;
+  height: 30.9vh;
+  border:#003566 solid 0.1vw;
+  border-radius: 5vw;
   display: flex;
-  flex-direction: row;
-  font-weight: lighter;
-}
-.thead{
-  font-weight:bolder;
-}
-.td{
-  padding: 1vh 0;
-}
-.tname{
-  width: 47vw;
-}
-.ttime{
-  width: 31vw;
-}
-.tdetail{
-  width: 12vw;
-  position: relative;
-}
-.edit-icon{
-  position: absolute;
-  width: 10vw;
-  height: 4vh;
+  justify-content: center;
+  align-items: center;
+  background-color: #001D3D;
 }

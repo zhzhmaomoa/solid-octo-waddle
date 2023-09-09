@@ -1,0 +1,65 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="head">
+    <button class="add-btn" bindtap="toggleAddDialog">新增</button>
+  </view>
+  <scroll-view class="table" scroll-y="true">
+    <view class="tr thead">
+      <view class="tname td">成员名字</view>
+      <view class="ttime td">创建时间</view>
+      <view class="tdetail td">详情</view>
+    </view>
+    <view wx:for="{{members}}" wx:key="item" class="tr">
+      <view class="tname td">
+        {{item.name}}
+      </view>
+      <view class="ttime td">
+        {{item.createdAt}}
+      </view>
+      <view class="tdetail td" data-detail="{{item}}" bindtap="handleQueryDetail">
+        <image class="edit-icon" src="../../assets/edit.svg"></image>
+      </view>
+    </view>
+  </scroll-view>
+  <dialog wx:if="{{addDialogVisible}}" bindhandleclose="toggleAddDialog">
+    <view class="add-dialog-body" slot="body">
+      <view class="dialog-tr">
+        <View class="dialog-tr-key">名称</View>
+        <View class="dialog-tr-value">
+          <input class="dialog-input" bindblur="storeAddedMemberName"/>
+        </View>
+      </view>
+    </view>
+    <view class="dialog-footer" slot="footer">
+      <view class="add-tick-container" bind:tap="handleAddMember">
+        <image class="icon" src="../../assets/tick.svg"></image>
+      </view>
+    </view>
+  </dialog>
+  <dialog wx:if="{{detailDialogVisible}}" bindhandleclose="toggleDetailDialog">
+    <view class="dialog-body" slot="body">
+      <view class="dialog-tr">
+        <View class="dialog-tr-key">名称</View>
+        <View class="dialog-tr-value">
+          <input class="dialog-input" value="{{memberDetail.name}}" bindblur="storeDetailInputName"/>
+        </View>
+      </view>
+      <view class="dialog-tr">
+        <view class="dialog-tr-key">创建时间</view>
+        <view class="dialog-tr-value">{{memberDetail.createdAt}}</view>
+      </view>
+      <view class="dialog-tr">
+        <view class="dialog-tr-key">更新时间</view>
+        <view class="dialog-tr-value">{{memberDetail.updatedAt}}</view>
+      </view>
+    </view>
+    <view class="dialog-footer" slot="footer">
+      <view class="delete-container" bind:tap="handleDeteleOne">
+        <image class="icon" src="../../assets/delete.svg"></image>
+      </view>
+      <view class="tick-container" bind:tap="handleEditOneName">
+        <image class="icon" src="../../assets/tick.svg"></image>
+      </view>
+    </view>
+  </dialog>
+</view>

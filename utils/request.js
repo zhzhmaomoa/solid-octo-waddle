@@ -10,7 +10,6 @@ export async function netQuery(method = 'GET', path, callback, data) {
   }
   const success = (res)=>{
     callback(new Promise((resolve,reject)=>{
-      // console.log(res,"res");
       const {data} = res;
       if(data.code){
         reject(data);
