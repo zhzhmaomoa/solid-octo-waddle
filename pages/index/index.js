@@ -4,7 +4,7 @@ Page({
       url: '/pages/member/member',
     })
   },
-  toContributionManaement(){
+  toContributionManagement(){
     wx.navigateTo({
       url: '/pages/contribution/contribution',
     })

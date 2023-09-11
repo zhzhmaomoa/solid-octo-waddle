@@ -1,4 +1,4 @@
 <view class="container">
   <view class="item" bind:tap="toMemberManagement">成员管理</view>
-  <view class="item" bind:tap="toContributionManaement">数据管理</view>
+  <view class="item" bind:tap="toContributionManagement">数据管理</view>
 </view>

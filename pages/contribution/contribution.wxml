@@ -1,2 +1,4 @@
-<!--pages/data.wxml-->
-<text>pages/contribution.wxml</text>
+<view class="container">
+  <view class="item" bind:tap="toSumbitManagement">每月贡献上报</view>
+  <view class="item" bind:tap="toManagementMonthly">分月数据管理</view>
+</view>

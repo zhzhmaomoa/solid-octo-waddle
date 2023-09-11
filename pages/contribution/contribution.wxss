@@ -1,1 +1,16 @@
-/* pages/data.wxss */
+.container{
+  display:flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: space-around;
+}
+.item{
+  width: 61.8vw;
+  height: 30.9vh;
+  border:#003566 solid 0.1vw;
+  border-radius: 5vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #001D3D;
+}
