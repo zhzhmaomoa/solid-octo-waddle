@@ -65,14 +65,11 @@
   </dialog>
   <dialog wx:if="{{timePickerDialogVisible}}" bindhandleclose="toggleTimePickerDialog">
     <view class="time-picker-dialog-body" slot="body">
-      <picker-view class="picker-view" value="{{selectedTimeList}}">
-        <picker-view-column class="picker-view-column">
-          <view wx:for="{{yearArr}}" wx:key="item">{{item}}年</view>
-        </picker-view-column>
-        <picker-view-column>
-          <view wx:for="{{monthArr}}" wx:key="item">{{item}}月</view>
-        </picker-view-column>
-      </picker-view>
+      <swiper vertical="true" class="year-picker">
+        <swiper-item wx:for="{{yearArr}}" wx:key="index" class="year-picker-item">
+          {{item}}
+        </swiper-item>
+      </swiper>
     </view>
     <view class="dialog-footer" slot="footer">
       <view class="add-tick-container" bind:tap="handleTimePickerChange">

@@ -59,14 +59,10 @@
 .time-picker-dialog-body{
   height: 25vh;
 }
-.picker-view{
-  height: 25vh;
-  width: 100vw;
-  /* color:white; */
+.year-picker{
+  width: 30vw;
+  height: 5vh;
 }
-/* .picker-view-column{
-  background-color: #000814;
-} */
 .add-dialog-body{
   height: 8.26vh;
 }
