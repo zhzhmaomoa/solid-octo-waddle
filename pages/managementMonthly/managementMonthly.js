@@ -46,6 +46,7 @@ Page({
     });
   },
   handleQuery(){
+    console.log('查询');
     app.netQuery('GET','/members').then((res)=>{
       let result = res.map((item)=>{
         const createdAt =  item.createdAt.slice(0,10);
@@ -71,14 +72,32 @@ Page({
     this.setData({
       timePickerDialogVisible:!this.data.timePickerDialogVisible
     });
+    if(!this.data.timePickerDialogVisible){
+      this.handleQuery();
+    }
   },
-  handleTimePickerChange(){
-    console.log(e.detail);
+  handleTimePickerChange(e){
+    const dateList = e.detail.value;
+    this.setData({
+      selectedTimeList:dateList,
+      time:yearArr[dateList[0]]+'/'+monthArr[dateList[1]]
+    })
   },
-  toggleAddDialog(){
+  async toggleAddDialog(){
     this.setData({
       addDialogVisible:!this.data.addDialogVisible
-    })
+    });
+    try {
+      const res = await app.netQuery('GET','/members')
+      this.setData({
+        members:res
+      })
+    } catch (error) {
+      wx.showToast({
+        title:error,
+        icon:'error'
+      })
+    }
   },
   storeAddedMemberName(event){
     const {value} = event.detail;

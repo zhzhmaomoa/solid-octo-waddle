@@ -1,5 +1,5 @@
 .head{
-  padding: 3vh 0;
+  padding: 3vh 0 4vh;
   width: 100vw;
   display: flex;
   justify-content: space-around;
@@ -59,12 +59,25 @@
 .time-picker-dialog-body{
   height: 25vh;
 }
-.year-picker{
-  width: 30vw;
-  height: 5vh;
+.picker-view{
+  height: 25vh;
+  width: 100vw;
+  text-align: center;
+}
+.mask{
+  background:#000814;
+  z-index:0;
+}
+.indicator{
+  height:4.8vh;
+  background:#001D3D;
+  line-height: 4.8vh;
+  z-index:0;
+  border-top:#000814 0.1vh solid;
+  border-bottom:#000814 0.1vh solid;
 }
 .add-dialog-body{
-  height: 8.26vh;
+  height: 16.53vh;
 }
 .add-tick-container{
   position: relative;

@@ -5,7 +5,7 @@
     <view class="add-btn" bindtap="toggleAddDialog">新增</view>
   </view>
   <scroll-view class="table" scroll-y="true">
-    <view class="tr thead">
+    <!-- <view class="tr thead">
       <view class="tname td">成员名字</view>
       <view class="ttime td">创建时间</view>
       <view class="tdetail td">详情</view>
@@ -20,14 +20,20 @@
       <view class="tdetail td" data-detail="{{item}}" bindtap="handleQueryDetail">
         <image class="edit-icon" src="../../assets/edit.svg"></image>
       </view>
-    </view>
+    </view> -->
   </scroll-view>
   <dialog wx:if="{{addDialogVisible}}" bindhandleclose="toggleAddDialog">
     <view class="add-dialog-body" slot="body">
       <view class="dialog-tr">
-        <View class="dialog-tr-key">名称</View>
+        <View class="dialog-tr-key">贡献量</View>
         <View class="dialog-tr-value">
           <input class="dialog-input" bindblur="storeAddedMemberName"/>
+        </View>
+      </view>
+      <view class="dialog-tr">
+        <View class="dialog-tr-key">年月</View>
+        <View class="dialog-tr-value">
+          {{time}}
         </View>
       </view>
     </view>
@@ -65,14 +71,17 @@
   </dialog>
   <dialog wx:if="{{timePickerDialogVisible}}" bindhandleclose="toggleTimePickerDialog">
     <view class="time-picker-dialog-body" slot="body">
-      <swiper vertical="true" class="year-picker">
-        <swiper-item wx:for="{{yearArr}}" wx:key="index" class="year-picker-item">
-          {{item}}
-        </swiper-item>
-      </swiper>
+      <picker-view mask-class="mask" indicator-class="indicator" class="picker-view" value="{{selectedTimeList}}" bindchange="handleTimePickerChange">
+        <picker-view-column>
+          <view wx:for="{{yearArr}}" wx:key="item">{{item}}年</view>
+        </picker-view-column>
+        <picker-view-column>
+          <view wx:for="{{monthArr}}" wx:key="item">{{item}}月</view>
+        </picker-view-column>
+      </picker-view>
     </view>
     <view class="dialog-footer" slot="footer">
-      <view class="add-tick-container" bind:tap="handleTimePickerChange">
+      <view class="add-tick-container" bind:tap="handleQuery">
         <image class="icon" src="../../assets/tick.svg"></image>
       </view>
     </view>
