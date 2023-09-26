@@ -1,0 +1,27 @@
+<view class="container">
+  <view class="head">
+    {{time}}
+  </view>
+  <view wx:if="{{formData.length}}">
+    <scroll-view class="table" scroll-y="true">
+      <view class="tr thead">
+        <view class="tname td">成员名字</view>
+        <view class="tquantity td">贡献量</view>
+      </view>
+      <view wx:for="{{formData}}" wx:key="id" class="tr">
+        <view class="tname td">
+          {{item.name}}
+        </view>
+        <view class="tquantity td">
+          <input type="number" class="dialog-input" value="{{item.quantity}}" data-id="{{item.id}}" bindblur="storeQuantityById"/>
+        </view>
+      </view>
+    </scroll-view>
+    <view class="add-tick-container" bind:tap="handleAddContributionsMonthly">
+      <image class="icon" src="../../assets/tick.svg"></image>
+    </view>
+  </view>
+  <view wx:else>
+    <view class="main">本月已上传贡献</view>
+  </view>
+</view>

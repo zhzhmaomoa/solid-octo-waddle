@@ -4,13 +4,14 @@
     "pages/logs/logs",
     "pages/member/member",
     "pages/contribution/contribution",
-    "pages/managementMonthly/managementMonthly"
+    "pages/managementMonthly/managementMonthly",
+    "pages/dataReport/dataReport",
+    "pages/dataManagement/dataManagement"
   ],
   "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#000814",
     "navigationBarTitleText": "Weixin",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "white"
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"

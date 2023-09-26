@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view class="container">
   <view class="head">
-    <button class="add-btn" bindtap="toggleAddDialog">新增</button>
+    <view class="add-btn" bindtap="toggleAddDialog">新增</view>
   </view>
   <scroll-view class="table" scroll-y="true">
     <view class="tr thead">

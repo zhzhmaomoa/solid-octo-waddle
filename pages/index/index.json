@@ -1,4 +1,6 @@
 {
   "usingComponents": {
-  }
+    "qiun-wx-ucharts": "/component/qiun-wx-ucharts/index"
+  },
+  "pageOrientation":"landscape"
 }

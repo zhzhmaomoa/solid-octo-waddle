@@ -1,10 +1,17 @@
+.container{
+  height: 100vh;
+}
 .head{
-  padding: 3vh 0 4vh;
+  padding: 3vh 0 4vh;  
 }
 .add-btn{
   height: 8vh;
   background-color: #001d3d;
   color:white;
+  line-height: 8vh;
+  text-align: center;
+  width: 38.2vw;
+  margin: 0 auto;
 }
 .table{
   height:85vh;

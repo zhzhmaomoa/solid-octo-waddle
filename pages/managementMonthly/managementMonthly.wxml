@@ -2,32 +2,39 @@
 <view class="container">
   <view class="head">
     <view class="time-picker-btn" bindtap="toggleTimePickerDialog">{{time}}</view>
-    <view class="add-btn" bindtap="toggleAddDialog">新增</view>
+    <!-- <view class="add-btn" bindtap="toggleAddDialog">新增</view> -->
   </view>
   <scroll-view class="table" scroll-y="true">
-    <!-- <view class="tr thead">
+    <view class="tr thead">
       <view class="tname td">成员名字</view>
-      <view class="ttime td">创建时间</view>
+      <view class="tquantity td">贡献量</view>
       <view class="tdetail td">详情</view>
     </view>
-    <view wx:for="{{members}}" wx:key="item" class="tr">
+    <view wx:for="{{contributionsData}}" wx:key="id" class="tr">
       <view class="tname td">
-        {{item.name}}
+        {{item.Member.name}}
       </view>
-      <view class="ttime td">
-        {{item.createdAt}}
+      <view class="tquantity td">
+        {{item.quantity}}
       </view>
       <view class="tdetail td" data-detail="{{item}}" bindtap="handleQueryDetail">
         <image class="edit-icon" src="../../assets/edit.svg"></image>
       </view>
-    </view> -->
+    </view>
   </scroll-view>
   <dialog wx:if="{{addDialogVisible}}" bindhandleclose="toggleAddDialog">
     <view class="add-dialog-body" slot="body">
+      <scroll-view scroll-y="true">
+        <view class="add-dialog-members-show">
+          <view wx:for="{{members}}" wx:key="id" data-member="{{item.id}}" bindtap="storeSelectedMember"  class="add-dialog-member-show-item  {{item.id===selectedMemberId?'add-dialog-member-selected':''}}">
+            {{item.name}}
+          </view>
+        </view>
+      </scroll-view>
       <view class="dialog-tr">
         <View class="dialog-tr-key">贡献量</View>
         <View class="dialog-tr-value">
-          <input class="dialog-input" bindblur="storeAddedMemberName"/>
+          <input class="dialog-input" bindblur="storeAddedContributions"/>
         </View>
       </view>
       <view class="dialog-tr">
@@ -38,7 +45,7 @@
       </view>
     </view>
     <view class="dialog-footer" slot="footer">
-      <view class="add-tick-container" bind:tap="handleAddMember">
+      <view class="add-tick-container" bind:tap="handleAddContributions">
         <image class="icon" src="../../assets/tick.svg"></image>
       </view>
     </view>
@@ -46,25 +53,21 @@
   <dialog wx:if="{{detailDialogVisible}}" bindhandleclose="toggleDetailDialog">
     <view class="dialog-body" slot="body">
       <view class="dialog-tr">
-        <View class="dialog-tr-key">名称</View>
+        <view class="dialog-tr-key">成员名字</view>
+        <view class="dialog-tr-value">{{memberContributionDetail.Member.name}}</view>
+      </view>
+      <view class="dialog-tr">
+        <View class="dialog-tr-key">贡献量</View>
         <View class="dialog-tr-value">
-          <input class="dialog-input" value="{{memberDetail.name}}" bindblur="storeDetailInputName"/>
+          <input class="dialog-input" value="{{memberContributionDetail.quantity}}" bindblur="storeDetailInputQuantity"/>
         </View>
-      </view>
-      <view class="dialog-tr">
-        <view class="dialog-tr-key">创建时间</view>
-        <view class="dialog-tr-value">{{memberDetail.createdAt}}</view>
-      </view>
-      <view class="dialog-tr">
-        <view class="dialog-tr-key">更新时间</view>
-        <view class="dialog-tr-value">{{memberDetail.updatedAt}}</view>
       </view>
     </view>
     <view class="dialog-footer" slot="footer">
-      <view class="delete-container" bind:tap="handleDeteleOne">
+      <!-- <view class="delete-container" bind:tap="handleDeteleOne">
         <image class="icon" src="../../assets/delete.svg"></image>
-      </view>
-      <view class="tick-container" bind:tap="handleEditOneName">
+      </view> -->
+      <view class="tick-container" bind:tap="handleEditOneQuantity">
         <image class="icon" src="../../assets/tick.svg"></image>
       </view>
     </view>
@@ -81,7 +84,7 @@
       </picker-view>
     </view>
     <view class="dialog-footer" slot="footer">
-      <view class="add-tick-container" bind:tap="handleQuery">
+      <view class="add-tick-container" bind:tap="toggleTimePickerDialog">
         <image class="icon" src="../../assets/tick.svg"></image>
       </view>
     </view>

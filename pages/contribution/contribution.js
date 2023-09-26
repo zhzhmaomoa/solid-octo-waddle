@@ -1,7 +1,7 @@
 Page({
-  toSumbitManagement(){
+  toFormReport(){
     wx.navigateTo({
-      url: '/pages/member/member',
+      url: '/pages/dataReport/dataReport',
     })
   },
   toManagementMonthly(){

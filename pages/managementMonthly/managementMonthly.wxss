@@ -44,7 +44,7 @@
 .tname{
   width: 47vw;
 }
-.ttime{
+.tquantity{
   width: 31vw;
 }
 .tdetail{
@@ -76,15 +76,28 @@
   border-top:#000814 0.1vh solid;
   border-bottom:#000814 0.1vh solid;
 }
-.add-dialog-body{
-  height: 16.53vh;
+.add-dialog-members-show{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding:5vw 2vw;
+  height: 25vh;
+}
+.add-dialog-member-show-item{
+  background-color: #001D3D;
+  margin: 1vw 2vw;
+  padding: 1vw 2vw;
+  border:1px solid #001D3D;
+}
+.add-dialog-member-selected{
+  border:1px solid #ffd60a;
 }
 .add-tick-container{
   position: relative;
   width: 100vw;
 }
 .dialog-body{
-  height: 25vh;
+  height: 16.52vh;
 }
 .dialog-tr{
   height: 8.26vh;
@@ -123,7 +136,7 @@
 }
 .tick-container{
   position: relative;
-  width: 61.8vw;
+  width: 100vw;
 }
 .icon{
   position: absolute;

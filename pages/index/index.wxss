@@ -1,16 +1,21 @@
 .container{
-  display:flex;
   height: 100vh;
-  align-items: center;
-  justify-content: space-around;
+  width: 95vw;
+  padding: 0  0  0 5vw;
 }
-.item{
-  width: 61.8vw;
-  height: 30.9vh;
-  border:#003566 solid 0.1vw;
-  border-radius: 5vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.box{
+  width: 594vw;
+  height: 85vh;
+}
+.bottom{
+  padding:2.5vh 0;
+  height: 10vh;
+}
+.tag{
+  width: 15vw;
+  height: 10vh;
   background-color: #001D3D;
+  text-align: center;
+  line-height: 10vh;
+  border-radius: 2vh;
 }
