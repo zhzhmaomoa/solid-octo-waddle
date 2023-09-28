@@ -10,8 +10,8 @@
         background="#000814"
       />
     </view>
+    <view class="bottom">
+      <view class="tag" bind:tap="toDataManagement">数据管理</view>
+    </view>
   </scroll-view>
-  <view class="bottom">
-    <view class="tag" bind:tap="toDataManagement">数据管理</view>
-  </view>
 </view>

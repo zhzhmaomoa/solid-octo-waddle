@@ -92,9 +92,10 @@ Page({
           icon:'success'
         })
         this.handleQuery();
-    }).catch((data)=>{
+    }).catch((error)=>{
+      console.log(error)
       wx.showToast({
-        title:data.message,
+        title:error.message,
         icon:'error'
       })
     }).finally(()=>{
