@@ -63,6 +63,7 @@
   height: 25vh;
   width: 100vw;
   text-align: center;
+  line-height: 4.8vh;
 }
 .mask{
   background:#000814;
@@ -71,7 +72,6 @@
 .indicator{
   height:4.8vh;
   background:#001D3D;
-  line-height: 4.8vh;
   z-index:0;
   border-top:#000814 0.1vh solid;
   border-bottom:#000814 0.1vh solid;

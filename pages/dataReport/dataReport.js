@@ -16,11 +16,8 @@ Page({
   },
   initCurrentYearMonth(){
     this.setData({
-      time: "2023-08"
+      time: formatTime(new Date())
     });
-    // this.setData({
-    //   time: formatTime(new Date())
-    // });
   },
   async checkHasItBeenSubmittedInBulkThisMonth(){
     try {

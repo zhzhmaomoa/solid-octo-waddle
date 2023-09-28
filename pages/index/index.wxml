@@ -1,17 +1,16 @@
 <view class="container">
-  <scroll-view scroll-x="true">
-    <view class="box">
-      <qiun-wx-ucharts 
-        type="line"
-        opts="{{opts}}"
-        chartData="{{chartData}}"
-        onzoom="true"
-        ontouch="true"
-        background="#000814"
-      />
-    </view>
+      <view class="box">
+        <qiun-wx-ucharts 
+          type="line"
+          opts="{{opts}}"
+          chartData="{{chartData}}"
+          background="#000814"
+          disableScroll="{{true}}"
+          onzoom="{{true}}"
+          ontouch="{{true}}"
+        />
+      </view>
     <view class="bottom">
       <view class="tag" bind:tap="toDataManagement">数据管理</view>
     </view>
-  </scroll-view>
 </view>
