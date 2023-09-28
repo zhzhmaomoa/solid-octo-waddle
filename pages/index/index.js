@@ -4,9 +4,6 @@ Page({
     chartData: {},
     opts: {
       enableScroll:true,
-      legend:{
-        float:'left'
-      },
       color:['#b8b099','#6e504e','#c3473b','#c67b3a','#363634','#c3473b',
       "#5A5C5B","#AE5E53","#DAD057","#747570","#23396B","#7AA3A9",
       '#b8b477','#877952','#ebe7db','#0242a3','#e76940','#576b84',
@@ -20,11 +17,6 @@ Page({
         disableGrid: true,
         itemCount:100
       },
-      extra:{
-        tooltip:{
-          showBox:false
-        }
-      }
     }
   },
   onShow() {
