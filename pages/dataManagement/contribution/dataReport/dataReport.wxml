@@ -18,7 +18,7 @@
       </view>
     </scroll-view>
     <view class="add-tick-container" bind:tap="handleAddContributionsMonthly">
-      <image class="icon" src="../../assets/tick.svg"></image>
+      <image class="icon" src="../../../../assets/tick.svg"></image>
     </view>
   </view>
   <view wx:else>

@@ -18,7 +18,7 @@
         {{item.quantity}}
       </view>
       <view class="tdetail td" data-detail="{{item}}" bindtap="handleQueryDetail">
-        <image class="edit-icon" src="../../assets/edit.svg"></image>
+        <image class="edit-icon" src="../../../../assets/edit.svg"></image>
       </view>
     </view>
   </scroll-view>
@@ -46,7 +46,7 @@
     </view>
     <view class="dialog-footer" slot="footer">
       <view class="add-tick-container" bind:tap="handleAddContributions">
-        <image class="icon" src="../../assets/tick.svg"></image>
+        <image class="icon" src="../../../../assets/tick.svg"></image>
       </view>
     </view>
   </dialog>
@@ -65,10 +65,10 @@
     </view>
     <view class="dialog-footer" slot="footer">
       <!-- <view class="delete-container" bind:tap="handleDeteleOne">
-        <image class="icon" src="../../assets/delete.svg"></image>
+        <image class="icon" src="../../../../assets/delete.svg"></image>
       </view> -->
       <view class="tick-container" bind:tap="handleEditOneQuantity">
-        <image class="icon" src="../../assets/tick.svg"></image>
+        <image class="icon" src="../../../../assets/tick.svg"></image>
       </view>
     </view>
   </dialog>
@@ -85,7 +85,7 @@
     </view>
     <view class="dialog-footer" slot="footer">
       <view class="add-tick-container" bind:tap="toggleTimePickerDialog">
-        <image class="icon" src="../../assets/tick.svg"></image>
+        <image class="icon" src="../../../../assets/tick.svg"></image>
       </view>
     </view>
   </dialog>

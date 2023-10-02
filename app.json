@@ -2,10 +2,10 @@
   "pages": [
     "pages/index/index",
     "pages/logs/logs",
-    "pages/member/member",
-    "pages/contribution/contribution",
-    "pages/managementMonthly/managementMonthly",
-    "pages/dataReport/dataReport",
+    "pages/dataManagement/member/member",
+    "pages/dataManagement/contribution/contribution",
+    "pages/dataManagement/contribution/managementMonthly/managementMonthly",
+    "pages/dataManagement/contribution/dataReport/dataReport",
     "pages/dataManagement/dataManagement"
   ],
   "window": {

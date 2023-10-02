@@ -38,5 +38,10 @@ Page({
     wx.navigateTo({
       url: '/pages/dataManagement/dataManagement',
     })
+  },
+  toMap(){
+    wx.navigateTo({
+      url: '/pages/dataManagement/dataManagement',
+    })
   }
 })

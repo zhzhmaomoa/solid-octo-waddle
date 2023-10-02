@@ -12,5 +12,6 @@
       </view>
     <view class="bottom">
       <view class="tag" bind:tap="toDataManagement">数据管理</view>
+      <view class="tag" bind:tap="toMap">地图</view>
     </view>
 </view>
