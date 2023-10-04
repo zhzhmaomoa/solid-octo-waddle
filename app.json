@@ -6,7 +6,8 @@
     "pages/dataManagement/contribution/contribution",
     "pages/dataManagement/contribution/managementMonthly/managementMonthly",
     "pages/dataManagement/contribution/dataReport/dataReport",
-    "pages/dataManagement/dataManagement"
+    "pages/dataManagement/dataManagement",
+    "pages/map/map"
   ],
   "window": {
     "navigationBarBackgroundColor": "#000814",

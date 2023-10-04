@@ -2,19 +2,72 @@
   height: 100vh;
   padding: 0  0  0 5vw;
 }
+.scroll-view{
+  width: 95vw;
+  height: 100vh;
+}
 .box{
   width: 95vw;
-  height: 85vh;
+  height: 300vh;
 }
-.bottom{
-  padding:2.5vh 0;
-  height: 10vh;
+.airplane{
+  width: 4vw;
+  height: 4vw;
+  position:fixed;
+  left: 1vw;
+  top: 1vw;
+  transition: left 1s ease-in;
 }
-.tag{
-  width: 15vw;
-  height: 10vh;
-  background-color: #001D3D;
-  text-align: center;
-  line-height: 10vh;
-  border-radius: 2vh;
+.airplane-fly{
+  left:100vw;
+}
+.nav{
+  background-color: #003566;
+  position:fixed;
+  left: 0;
+  top: 0;
+  width: 0;
+  padding: 0;
+  height: 4vw;
+  visibility: hidden;
+  transition: all 1s ease-in;
+}
+.nav-fly{
+  visibility: visible;
+  padding: 0 19.1vw;
+  width: 61.8vw;
+}
+.nav-item{
+  width: 3vw;
+  height: 3vw;
+  visibility: hidden;
+  position: fixed;
+  top:0.5vh;
+}
+.nav-item1-appear{
+  left:34vw;
+  transition: visibility 0.1s ease 0.5s;
+  visibility: visible;
+}
+.nav-item2-appear{
+  left:50vw;
+  transition: visibility 0.1s ease 0.7s;
+  visibility: visible;
+}
+.nav-item3-appear{
+  left:65vw;
+  transition: visibility 0.1s ease 0.9s;
+  visibility: visible;
+}
+.nav-item1-disappear{
+  left:34vw;
+  transition: visibility 0.1s ease 0.7s;
+}
+.nav-item2-disappear{
+  left:50vw;
+  transition: visibility 0.1s ease 0.6s;
+}
+.nav-item3-disappear{
+  left:65vw;
+  transition: visibility 0.1s ease 0.4s;
 }
