@@ -1,8 +1,9 @@
-.container{
+.map{
+  width:95vw;
   height: 100vh;
-  padding: 0  0  0 5vw;
+  padding: 0  0 0 5vw;
 }
-.charts{
-  width: 95vw;
-  height: 85vh;
+
+.page-body-button {
+  margin-bottom: 30rpx;
 }
