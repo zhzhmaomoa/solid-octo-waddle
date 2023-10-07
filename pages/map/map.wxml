@@ -4,10 +4,20 @@
     class="map"
     latitude="{{latitude}}"
     longitude="{{longitude}}"
+    scale="4"
+    min-scale="4"
+    max-scale="10"
+    markers="{{markers}}"
+  ></map>
+  <!-- <map
+    id="myMap"
+    class="map"
+    latitude="{{latitude}}"
+    longitude="{{longitude}}"
     markers="{{markers}}"
     include-points="{{includePoints}}"
     scale="4"
-  ></map>
+  ></map> -->
   <!-- <view class="btn-area">
     <button bindtap="getCenterLocation" class="page-body-button" type="primary">获取位置</button>
     <button bindtap="moveToLocation" class="page-body-button" type="primary">移动位置</button>

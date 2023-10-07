@@ -1,7 +1,8 @@
 // app.js
-import {netQuery} from "./utils/request.js"
+import {netQuery,assetsQuery} from "./utils/request.js"
 App({
   netQuery,
+  assetsQuery,
   onLaunch() {
     // 展示本地存储能力
     const logs = wx.getStorageSync('logs') || []

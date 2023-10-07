@@ -1,13 +1,13 @@
 {
   "pages": [
+    "pages/map/map",
     "pages/index/index",
     "pages/logs/logs",
     "pages/dataManagement/member/member",
     "pages/dataManagement/contribution/contribution",
     "pages/dataManagement/contribution/managementMonthly/managementMonthly",
     "pages/dataManagement/contribution/dataReport/dataReport",
-    "pages/dataManagement/dataManagement",
-    "pages/map/map"
+    "pages/dataManagement/dataManagement"
   ],
   "window": {
     "navigationBarBackgroundColor": "#000814",
