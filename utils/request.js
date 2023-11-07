@@ -1,6 +1,6 @@
 import { resourceAppid, resourceEnv } from "../env.js"
 const baseUrl = 'http://10.154.1.49:8080/api';
-const dev = 0;
+const dev = 1;
 
 export function netQuery(method = 'GET', path, data = {},number=0) {
   return new Promise(async (resolve,reject)=>{

@@ -1,13 +1,14 @@
 {
   "pages": [
-    "pages/map/map",
     "pages/index/index",
+    "pages/chart/chart",
+    "pages/map/map",
     "pages/logs/logs",
-    "pages/dataManagement/member/member",
-    "pages/dataManagement/contribution/contribution",
-    "pages/dataManagement/contribution/managementMonthly/managementMonthly",
-    "pages/dataManagement/contribution/dataReport/dataReport",
-    "pages/dataManagement/dataManagement"
+    "pages/chart/dataManagement/member/member",
+    "pages/chart/dataManagement/contribution/contribution",
+    "pages/chart/dataManagement/contribution/managementMonthly/managementMonthly",
+    "pages/chart/dataManagement/contribution/dataReport/dataReport",
+    "pages/chart/dataManagement/dataManagement"
   ],
   "window": {
     "navigationBarBackgroundColor": "#000814",

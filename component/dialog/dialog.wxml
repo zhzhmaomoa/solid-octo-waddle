@@ -3,7 +3,7 @@
   <view class="hidden" bind:tap="handleCloseDialog"></view>
   <view class="main">
     <view class="header" bind:tap="handleCloseDialog">
-      <image class="icon-downward" src="../../assets/downward.svg"></image>
+      <image class="icon-downward" src="/assets/downward.svg"></image>
     </view>
     <view class="body">
       <slot name="body"></slot>

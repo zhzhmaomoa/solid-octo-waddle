@@ -1,12 +1,12 @@
 Page({
   toMemberManagement(){
     wx.navigateTo({
-      url: '/pages/dataManagement/member/member',
+      url: '/pages/chart/dataManagement/member/member',
     })
   },
   toContributionManagement(){
     wx.navigateTo({
-      url: '/pages/dataManagement/contribution/contribution',
+      url: '/pages/chart/dataManagement/contribution/contribution',
     })
   }
 })

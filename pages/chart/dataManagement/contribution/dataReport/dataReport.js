@@ -1,6 +1,6 @@
 // pages/dataReport.js
 const app = getApp()
-import {formatTime} from "../../../../utils/util.js"
+import {formatTime} from "../../../../../utils/util.js"
 
 Page({
   data: {

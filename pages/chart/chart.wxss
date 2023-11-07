@@ -1,0 +1,19 @@
+.container{
+  height: 100vh;
+  padding: 0  0  0 5vw;
+}
+.scroll-view{
+  width: 95vw;
+  height: 100vh;
+}
+.box{
+  width: 95vw;
+  height: 300vh;
+}
+.hidden-btn{
+  position: fixed;
+  left: 0;
+  bottom:0;
+  width: 5vw;
+  height: 5vw;
+}

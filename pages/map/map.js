@@ -33,7 +33,6 @@ Page({
           iconPath:fileUrls[index],
           width:'50px',
           height:'50px',
-          joinCluster:true
         })
       })
       console.log(markers);

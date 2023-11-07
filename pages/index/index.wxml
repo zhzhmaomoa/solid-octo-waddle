@@ -1,11 +1,9 @@
+<!--pages/index.wxml-->
 <view class="container">
-    <scroll-view scroll-y="true" class="scroll-view" scroll-top="9999999">
-      <canvas id="GQMhlpUKrZJhdaZpkiTnMhfLEqdZkOPs" type="2d" class="box" bindtouchend="tap" />
-    </scroll-view>
-    <image class="airplane {{hasAirplaneTakenOff?'airplane-fly':''}}" src="/assets/airplane.svg" bindtap="toggleAirplaneStatus"></image>
-    <view class="nav {{hasAirplaneTakenOff?'nav-fly':''}}">
-      <image class="nav-item  {{hasAirplaneTakenOff?'nav-item1-appear':'nav-item1-disappear'}}" src="/assets/data.svg" bindtap="toDataManagement" ></image>
-      <image class="nav-item  {{hasAirplaneTakenOff?'nav-item2-appear':'nav-item2-disappear'}}"  src="/assets/map.svg" bindtap="toMap"></image>
-      <image class="nav-item  {{hasAirplaneTakenOff?'nav-item3-appear':'nav-item3-disappear'}}"  src="/assets/close.svg" bindtap="toggleAirplaneStatus"></image>
-    </view>
+  <image class="airplane {{hasAirplaneTakenOff?'airplane-fly':''}}" src="/assets/airplane.svg" bindtap="toggleAirplaneStatus"></image>
+  <view class="nav {{hasAirplaneTakenOff?'nav-fly':''}}">
+    <image class="nav-item  {{hasAirplaneTakenOff?'nav-item1-appear':'nav-item1-disappear'}}" src="/assets/data.svg" bindtap="toChart" ></image>
+    <image class="nav-item  {{hasAirplaneTakenOff?'nav-item2-appear':'nav-item2-disappear'}}"  src="/assets/map.svg" bindtap="toMap"></image>
+    <image class="nav-item  {{hasAirplaneTakenOff?'nav-item3-appear':'nav-item3-disappear'}}"  src="/assets/close.svg" bindtap="toggleAirplaneStatus"></image>
+  </view>
 </view>

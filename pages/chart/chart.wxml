@@ -1,0 +1,6 @@
+<view class="container">
+    <scroll-view scroll-y="true" class="scroll-view" scroll-top="9999999">
+      <canvas id="GQMhlpUKrZJhdaZpkiTnMhfLEqdZkOPs" type="2d" class="box" bindtouchend="tap" />
+    </scroll-view>
+    <view class="hidden-btn" bindtap="clickHiddenBtn"></view>
+</view>

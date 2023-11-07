@@ -1,7 +1,7 @@
 // index.js
 // 获取应用实例
 const app = getApp()
-import {formatTime} from "../../../../utils/util.js"
+import {formatTime} from "../../../../../utils/util.js"
 const time = new Date();
 let yearArr = [];
 for(let i=2022;i<=time.getFullYear();i++){
