@@ -5,13 +5,25 @@ const dev = 1;
 export function netQuery(method = 'GET', path, data = {},number=0) {
   return new Promise(async (resolve,reject)=>{
     const fail = (err) => {
+      wx.showToast({
+        title:err,
+        icon:'error'
+      })
       reject(err);
     }
     const success = (res) => {
         const { data } = res;
         if (data.code) {
+          wx.showToast({
+            title:data.message,
+            icon:'error'
+          })
           reject(data);
         } else {
+          wx.showToast({
+            title:data.message,
+            icon:'success'
+          })
           resolve(data.data);
         }
       };

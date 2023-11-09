@@ -1,14 +1,15 @@
 {
   "pages": [
+    "pages/chart/dataManagement/memory/memory",
     "pages/index/index",
+    "pages/chart/dataManagement/dataManagement",
     "pages/chart/chart",
     "pages/map/map",
     "pages/logs/logs",
     "pages/chart/dataManagement/member/member",
     "pages/chart/dataManagement/contribution/contribution",
     "pages/chart/dataManagement/contribution/managementMonthly/managementMonthly",
-    "pages/chart/dataManagement/contribution/dataReport/dataReport",
-    "pages/chart/dataManagement/dataManagement"
+    "pages/chart/dataManagement/contribution/dataReport/dataReport"
   ],
   "window": {
     "navigationBarBackgroundColor": "#000814",

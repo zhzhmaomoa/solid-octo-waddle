@@ -6,4 +6,19 @@
     <image class="nav-item  {{hasAirplaneTakenOff?'nav-item2-appear':'nav-item2-disappear'}}"  src="/assets/map.svg" bindtap="toMap"></image>
     <image class="nav-item  {{hasAirplaneTakenOff?'nav-item3-appear':'nav-item3-disappear'}}"  src="/assets/close.svg" bindtap="toggleAirplaneStatus"></image>
   </view>
+  <view class="rotation">
+      <image 
+        wx:for="{{images}}" 
+        wx:key="item" 
+        src="{{item.src}}" 
+        class="image {{item.class}}"
+        data-pattern="{{item.class}}"
+        data-pattern-index="{{index}}"
+        bindtap="toggleImage"
+      ></image>
+      <view class="description">
+        <view>{{date}}</view>
+        <view>{{title}}</view>
+      </view>
+  </view>
 </view>

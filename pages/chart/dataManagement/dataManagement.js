@@ -8,5 +8,10 @@ Page({
     wx.navigateTo({
       url: '/pages/chart/dataManagement/contribution/contribution',
     })
+  },
+  toMemory(){
+    wx.navigateTo({
+      url: '/pages/chart/dataManagement/memory/memory',
+    })
   }
 })

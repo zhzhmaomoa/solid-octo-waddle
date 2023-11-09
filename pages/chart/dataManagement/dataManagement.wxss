@@ -1,13 +1,10 @@
 .container{
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
+  overflow: hidden;
 }
 .item{
   width: 61.8vw;
-  height: 30.9vh;
+  margin:10vw auto;
+  height: 61.8vw;
   border:#003566 solid 0.1vw;
   border-radius: 5vw;
   display: flex;
