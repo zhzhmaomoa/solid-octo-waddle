@@ -1,34 +1,18 @@
+const app = getApp()
 Page({
   data: {
     hasAirplaneTakenOff:false,
-    images:[
-      {
-        src:"/assets/1.jpg",
-        class:"leftOtherImage",
-        title:'aa',
-        date:'1999-12-31'
-      },
-      {
-        src:"/assets/2.jpg",
-        class:"leftImage",
-      },
-      {
-        src:"/assets/3.jpg",
-        class:"centerImage"
-      },
-      {
-        src:"/assets/4.jpg",
-        class:"rightImage"
-      },
-      {
-        src:"/assets/5.jpg",
-        class:"rightOtherImage"
-      },
-    ],
+    images:[{
+        src:undefined,
+        class:undefined,
+        title:undefined,
+        date:undefined
+      }],
     date:'',
     title:''
   },
   onReady(){
+    this.handleQuery();
   },
   toggleAirplaneStatus(){
     this.setData({
@@ -44,6 +28,43 @@ Page({
     wx.navigateTo({
       url: '/pages/map/map',
     })
+  },
+  async handleQuery(){
+    try {
+      const res = await app.netQuery("GET","/memory/latest");
+      const processedRes = res.reverse().map((item,index)=>{
+        if(res.length-2===index){
+          this.setData({
+            date:item.date,
+            title:item.title,
+          })
+          return {
+            ...item,
+            class:'centerImage'
+          }
+        }else if(res.length-3 ===index){
+          return {
+            ...item,
+            class:'leftImage'
+          }
+        } else if(res.length-1===index){
+          return {
+            ...item,
+            class:'rightImage'
+          }
+        }else{
+          return {
+            ...item,
+            class:'leftOtherImage'
+          }
+        }
+      })
+      this.setData({
+        images:processedRes
+      })
+    } catch (error) {
+      console.log(error)
+    }
   },
   toggleImage(e){
     const {pattern,patternIndex} = e.currentTarget.dataset;

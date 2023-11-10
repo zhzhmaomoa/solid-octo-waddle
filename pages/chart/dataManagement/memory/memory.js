@@ -20,7 +20,7 @@ Page({
   async handleQuery(){
     try {
       const res = await app.netQuery('GET','/memory');
-      console.log(res);
+      // console.log(res);
       this.setData({
         memories:res
       })
@@ -30,32 +30,46 @@ Page({
   },
   toggleAddDialog(){
     this.setData({
-      addDialogVisible:!this.data.addDialogVisible
+      addDialogVisible:!this.data.addDialogVisible,
+      memoryDetail:{
+        id:undefined,
+        date:undefined,
+        src:undefined,
+        title:undefined,
+      }
     })
   },
-  storeAddedTitle(event){
-    const {value} = event.detail;
-    this.setData({
-      addedTitle:value
+  handleUploadImage(){
+    const that = this;
+    wx.chooseMedia({
+      count: 1,
+      mediaType: ['image'],
+      sourceType: ['album'],
+      success(res) {
+        console.log(res)
+        that.setData({
+          memoryDetail:{
+            ...that.data.memoryDetail,
+            src:res.tempFiles[0].tempFilePath
+          }
+        });
+      }
     })
   },
-  handleAddMemory(){
-    app.netQuery('POST','/members',{name:this.data.addedMemberName}).then(()=>{
-      wx.showToast({
-        title: '成功添加',
-        icon: 'success',
-      })
-      this.handleQuery();
-    }).catch((err)=>{
-      wx.showToast({
-        title:err,
-        icon: 'error',
-      })
-    }).finally(()=>{
+  async handleAddMemory(){
+    try {
+      const {title,date,src} = this.data.memoryDetail;
+      const fileID = await app.assetsUpload(src,title);
+      await app.netQuery("POSt","/memory",{
+        title,date,src:fileID
+      });
       this.setData({
         addDialogVisible:false
       })
-    })
+      this.handleQuery();
+    } catch (error) {
+      console.log(error);
+    }
   },
   async handleQueryDetail(event){
     const {detail} = event.currentTarget.dataset;
@@ -83,24 +97,23 @@ Page({
     })
   },
   async handleDelete(){
-    const {id} = this.data.memoryDetail;
+    const {id,src} = this.data.memoryDetail;
     try {
       await app.netQuery('DELETE','/memory',{id});
-      this.handleQuery();
+      await app.assetsDelete(src);
+      await this.handleQuery();
+      this.toggleDetailDialog();
     } catch (error) {
       console.log(error)
-    } finally{
-      this.toggleDetailDialog();
     }
   },
   async handleEdit(){
     try {
       await app.netQuery('PUT','/memory',this.data.memoryDetail);
-      this.handleQuery();
+      await this.handleQuery();
+      this.toggleDetailDialog();
     } catch (error) {
       console.log(error)
-    }finally{
-      this.toggleDetailDialog();
     }
   },
   toggleDetailDialog(){

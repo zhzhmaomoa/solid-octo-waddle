@@ -1,8 +1,5 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="head">
-    <view class="add-btn" bindtap="toggleAddDialog">新增</view>
-  </view>
   <scroll-view class="table" scroll-y="true">
     <view class="tr thead">
       <view class="tname td">标题</view>
@@ -21,13 +18,27 @@
       </view>
     </view>
   </scroll-view>
+  <view class="head">
+    <view class="add-btn" bindtap="toggleAddDialog">新增</view>
+  </view>
   <dialog wx:if="{{addDialogVisible}}" bindhandleclose="toggleAddDialog">
     <view class="add-dialog-body" slot="body">
       <view class="dialog-tr">
-        <View class="dialog-tr-key">title</View>
-        <View class="dialog-tr-value">
-          <input class="dialog-input" bindblur="storeAddedTitle"/>
-        </View>
+        <view class="dialog-tr-key">标题</view>
+        <view class="dialog-tr-value">
+          <input class="dialog-input" bindblur="storeDetailInputTitle"/>
+        </view>
+      </view>
+      <view class="dialog-tr">
+        <view class="dialog-tr-key">时间</view>
+        <view class="dialog-tr-value">
+          <input class="dialog-input" bindblur="storeDetailInputDate"/>
+        </view>
+      </view>
+      <view>
+        <view class="upload" bindtap="handleUploadImage">
+          <image src="{{memoryDetail.src}}" mode="aspectFit" class="uploaded-image"></image>
+        </view>
       </view>
     </view>
     <view class="dialog-footer" slot="footer">

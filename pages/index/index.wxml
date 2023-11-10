@@ -15,6 +15,7 @@
         data-pattern="{{item.class}}"
         data-pattern-index="{{index}}"
         bindtap="toggleImage"
+        mode="heightFix"
       ></image>
       <view class="description">
         <view>{{date}}</view>

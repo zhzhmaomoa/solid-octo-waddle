@@ -21,6 +21,7 @@
   border-bottom: 0.2vw solid #001d3d;
   padding: 0 5vw;
   display: flex;
+  align-items: center;
   flex-direction: row;
   font-weight: lighter;
   font-size:small;
@@ -40,10 +41,8 @@
 }
 .tdetail{
   width: 12vw;
-  position: relative;
 }
 .edit-icon{
-  position: absolute;
   width: 10vw;
   height: 4vh;
 }
