@@ -5,75 +5,40 @@ Page({
   data: {
     members:[],
     addDialogVisible:false,
-    addedMemberName:'',
     detailDialogVisible:false,
     memberDetail:{
       id:0,
-      name:'',
-      createdAt:'',
-      updatedAt:'',
-    }
+      name:undefined,
+      iconPath:undefined,
+      latitude:undefined,
+      longitude:undefined,
+      createdAt:undefined,
+      updatedAt:undefined,
+    },
+    oldIconPath:undefined
   },
   onReady(){
     this.handleQuery();
   },
-  handleQuery(){
-    app.netQuery('GET','/members').then((res)=>{
-      let result = res.map((item)=>{
+  async handleQuery(){
+    try {
+      const res = await app.netQuery('GET','/members');
+      const members = res.map((item)=>{
         const createdAt =  item.createdAt.slice(0,10);
         let updatedAt = item.updatedAt.slice(0,10);
         return {
-          id:item.id,
-          name:item.name,
+          ...item,
           createdAt,
           updatedAt,
         };
       })
+      // console.log(members)
       this.setData({
-        members:result
+        members
       })
-    }).catch((err)=>{
-      wx.showToast({
-        title:err,
-        icon:'error'
-      })
-    })
-  },
-  toggleAddDialog(){
-    this.setData({
-      addDialogVisible:!this.data.addDialogVisible
-    })
-  },
-  storeAddedMemberName(event){
-    const {value} = event.detail;
-    this.setData({
-      addedMemberName:value
-    })
-  },
-  handleAddMember(){
-    app.netQuery('POST','/members',{name:this.data.addedMemberName}).then(()=>{
-      wx.showToast({
-        title: '成功添加',
-        icon: 'success',
-      })
-      this.handleQuery();
-    }).catch((err)=>{
-      wx.showToast({
-        title:err,
-        icon: 'error',
-      })
-    }).finally(()=>{
-      this.setData({
-        addDialogVisible:false
-      })
-    })
-  },
-  handleQueryDetail(event){
-    const {detail } = event.currentTarget.dataset;
-    this.setData({
-      memberDetail:detail
-    })
-    this.toggleDetailDialog();
+    } catch (error) {
+      console.log(error);
+    }
   },
   storeDetailInputName(event){
     const {value} = event.detail;
@@ -84,46 +49,114 @@ Page({
       }
     })
   },
-  handleDeteleOne(){
-    const {id} = this.data.memberDetail
-    app.netQuery('DELETE','/members',{id}).then(()=>{
-        wx.showToast({
-          title:'已删除',
-          icon:'success'
-        })
-        this.handleQuery();
-    }).catch((error)=>{
-      console.log(error)
-      wx.showToast({
-        title:error.message,
-        icon:'error'
-      })
-    }).finally(()=>{
-      this.toggleDetailDialog();
+  storeDetailInputLatitude(event){
+    const {value} = event.detail;
+    this.setData({
+      memberDetail:{
+        ...this.data.memberDetail,
+        latitude:value
+      }
     })
   },
-  handleEditOneName(){
-    const {id,name} = this.data.memberDetail;
-    app.netQuery('PUT','/members',{id,name}).then((res)=>{
-      if(res.length===1){
-        wx.showToast({
-          title:'已修改',
-          icon:'success'
-        })
-        this.handleQuery();
+  storeDetailInputLongitude(event){
+    const {value} = event.detail;
+    this.setData({
+      memberDetail:{
+        ...this.data.memberDetail,
+        longitude:value
       }
-    }).catch((err)=>{
-      wx.showToast({
-        title:err,
-        icon:'error'
-      })
-    }).finally(()=>{
-      this.toggleDetailDialog();
     })
+  },
+  handleUploadImage(){
+    const that = this;
+    wx.chooseMedia({
+      count: 1,
+      mediaType: ['image'],
+      sourceType: ['album'],
+      success(res) {
+        console.log(res)
+        that.setData({
+          memberDetail:{
+            ...that.data.memberDetail,
+            iconPath:res.tempFiles[0].tempFilePath,
+          }
+        });
+      }
+    })
+  },
+  toggleAddDialog(){
+    this.setData({
+      addDialogVisible:!this.data.addDialogVisible,
+      memberDetail:{
+        id:0,
+        name:undefined,
+        iconPath:undefined,
+        latitude:undefined,
+        longitude:undefined,
+        createdAt:undefined,
+        updatedAt:undefined,
+      }
+    })
+  },
+  async handleAddMember(){
+    try {
+      const {name,iconPath,longitude,latitude} = this.data.memberDetail;
+      const fileID = await app.assetsUpload(iconPath,name,'map-markers-icon');
+      await app.netQuery('POST','/members',{
+        name,
+        iconPath:fileID,
+        longitude,
+        latitude
+      });
+      await this.handleQuery();
+      this.setData({
+        addDialogVisible:false
+      })
+    } catch (error) {
+      console.log(error)
+    }
   },
   toggleDetailDialog(){
     this.setData({
       detailDialogVisible:!this.data.detailDialogVisible
     })
+  },
+  handleQueryDetail(event){
+    const {detail } = event.currentTarget.dataset;
+    this.setData({
+      memberDetail:detail,
+      oldIconPath:detail.iconPath
+    })
+    this.toggleDetailDialog();
+  },
+  async handleDelete(){
+    const {id,iconPath} = this.data.memberDetail
+    try {
+      await app.netQuery('DELETE','/members',{id});
+      await app.assetsDelete(iconPath);
+      await this.handleQuery();
+      this.toggleDetailDialog();
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  async handleEdit(){
+    try {
+      const {id,name,iconPath,latitude,longitude} = this.data.memberDetail;
+      let fileId = iconPath;
+      if(this.data.oldIconPath !== iconPath){
+        console.log(this.data.oldIconPath);
+        await app.assetsDelete(this.data.oldIconPath);
+        fileId = await app.assetsUpload(iconPath,name,'map-markers-icon');
+      }
+      await app.netQuery('PUT','/members',{
+        id,name,latitude,longitude,
+        iconPath:fileId
+      });
+      await this.handleQuery();
+      this.toggleDetailDialog();
+    } catch (error) {
+      console.log(error);
+    }
   }
 })

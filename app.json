@@ -1,11 +1,11 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/chart/dataManagement/memory/memory",
+    "pages/map/map",
     "pages/chart/dataManagement/member/member",
+    "pages/chart/dataManagement/memory/memory",
     "pages/chart/dataManagement/dataManagement",
     "pages/chart/chart",
-    "pages/map/map",
     "pages/logs/logs",
     "pages/chart/dataManagement/contribution/contribution",
     "pages/chart/dataManagement/contribution/managementMonthly/managementMonthly",

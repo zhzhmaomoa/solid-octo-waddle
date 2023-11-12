@@ -1,8 +1,5 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="head">
-    <view class="add-btn" bindtap="toggleAddDialog">新增</view>
-  </view>
   <scroll-view class="table" scroll-y="true">
     <view class="tr thead">
       <view class="tname td">成员名字</view>
@@ -21,13 +18,33 @@
       </view>
     </view>
   </scroll-view>
+  <view class="head">
+    <view class="add-btn" bindtap="toggleAddDialog">新增</view>
+  </view>
   <dialog wx:if="{{addDialogVisible}}" bindhandleclose="toggleAddDialog">
-    <view class="add-dialog-body" slot="body">
+    <view class="dialog-body" slot="body">
       <view class="dialog-tr">
-        <View class="dialog-tr-key">名称</View>
-        <View class="dialog-tr-value">
-          <input class="dialog-input" bindblur="storeAddedMemberName"/>
-        </View>
+        <view class="dialog-tr-key">名称</view>
+        <view class="dialog-tr-value">
+          <input class="dialog-input" bindblur="storeDetailInputName"/>
+        </view>
+      </view>
+      <view class="dialog-tr">
+        <view class="dialog-tr-key">经度</view>
+        <view class="dialog-tr-value">
+          <input class="dialog-input"  bindblur="storeDetailInputLongitude"/>
+        </view>
+      </view>
+      <view class="dialog-tr">
+        <view class="dialog-tr-key">纬度</view>
+        <view class="dialog-tr-value">
+          <input class="dialog-input" bindblur="storeDetailInputLatitude"/>
+        </view>
+      </view>
+      <view>
+        <view class="upload" bindtap="handleUploadImage">
+          <image src="{{memberDetail.iconPath}}" mode="aspectFit" class="uploaded-image"></image>
+        </view>
       </view>
     </view>
     <view class="dialog-footer" slot="footer">
@@ -39,10 +56,22 @@
   <dialog wx:if="{{detailDialogVisible}}" bindhandleclose="toggleDetailDialog">
     <view class="dialog-body" slot="body">
       <view class="dialog-tr">
-        <View class="dialog-tr-key">名称</View>
-        <View class="dialog-tr-value">
+        <view class="dialog-tr-key">名称</view>
+        <view class="dialog-tr-value">
           <input class="dialog-input" value="{{memberDetail.name}}" bindblur="storeDetailInputName"/>
-        </View>
+        </view>
+      </view>
+      <view class="dialog-tr">
+        <view class="dialog-tr-key">经度</view>
+        <view class="dialog-tr-value">
+          <input class="dialog-input" value="{{memberDetail.longitude}}" bindblur="storeDetailInputLongitude"/>
+        </view>
+      </view>
+      <view class="dialog-tr">
+        <view class="dialog-tr-key">纬度</view>
+        <view class="dialog-tr-value">
+          <input class="dialog-input" value="{{memberDetail.latitude}}" bindblur="storeDetailInputLatitude"/>
+        </view>
       </view>
       <view class="dialog-tr">
         <view class="dialog-tr-key">创建时间</view>
@@ -52,12 +81,17 @@
         <view class="dialog-tr-key">更新时间</view>
         <view class="dialog-tr-value">{{memberDetail.updatedAt}}</view>
       </view>
+      <view>
+        <view class="upload" bindtap="handleUploadImage">
+          <image src="{{memberDetail.iconPath}}" mode="aspectFit" class="uploaded-image"></image>
+        </view>
+      </view>
     </view>
     <view class="dialog-footer" slot="footer">
-      <view class="delete-container" bind:tap="handleDeteleOne">
+      <view class="delete-container" bind:tap="handleDelete">
         <image class="icon" src="/assets/delete.svg"></image>
       </view>
-      <view class="tick-container" bind:tap="handleEditOneName">
+      <view class="tick-container" bind:tap="handleEdit">
         <image class="icon" src="/assets/tick.svg"></image>
       </view>
     </view>

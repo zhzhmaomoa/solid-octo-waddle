@@ -82,6 +82,7 @@
   transition-property:left right scale;
   transition-duration: .62s;
   transition-timing-function: linear;
+  border:2px solid #ffc300;
 }
 .leftImage{
   top:50%;

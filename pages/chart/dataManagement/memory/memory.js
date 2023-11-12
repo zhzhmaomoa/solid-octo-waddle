@@ -60,7 +60,7 @@ Page({
     try {
       const {title,date,src} = this.data.memoryDetail;
       const fileID = await app.assetsUpload(src,title);
-      await app.netQuery("POSt","/memory",{
+      await app.netQuery("POST","/memory",{
         title,date,src:fileID
       });
       this.setData({
@@ -71,7 +71,7 @@ Page({
       console.log(error);
     }
   },
-  async handleQueryDetail(event){
+  handleQueryDetail(event){
     const {detail} = event.currentTarget.dataset;
     this.setData({
       memoryDetail:detail
