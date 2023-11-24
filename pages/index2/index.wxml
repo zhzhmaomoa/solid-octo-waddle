@@ -1,0 +1,13 @@
+<view class="container">
+  <view>
+    <swiper
+      layout-type="tinder"
+    >
+      <block wx:for="{{images}}" wx:key="{{index}}">
+        <swiper-item>
+          <image src="{{item.src}}"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+</view>

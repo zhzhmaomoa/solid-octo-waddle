@@ -1,31 +1,24 @@
 {
   "pages": [
+    "pages/index2/index",
     "pages/index/index",
-    "pages/chart/dataManagement/memory/memory",
+    "pages/map/map",
     "pages/chart/dataManagement/member/member",
+    "pages/chart/dataManagement/memory/memory",
     "pages/chart/dataManagement/dataManagement",
     "pages/chart/chart",
-    "pages/map/map",
     "pages/chart/dataManagement/contribution/contribution",
     "pages/chart/dataManagement/contribution/managementMonthly/managementMonthly",
     "pages/chart/dataManagement/contribution/dataReport/dataReport"
   ],
-  "window": {
-    "navigationBarBackgroundColor": "#000814",
-    "navigationBarTitleText": "Weixin",
-    "navigationBarTextStyle": "white"
-  },
   "style": "v2",
   "sitemapLocation": "sitemap.json",
-  "renderer":"skyline",
+  "renderer": "skyline",
   "lazyCodeLoading": "requiredComponents",
   "componentFramework": "glass-easel",
-  "disableScroll": true,
-  "navigationStyle": "custom",
-  "rendererOptions": { 
-    "skyline": { 
-      "defaultDisplayBlock": true,
-      "defaultContentBox": true
-    } 
+  "rendererOptions": {
+    "skyline": {
+      "defaultDisplayBlock": true
+    }
   }
 }

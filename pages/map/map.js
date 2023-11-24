@@ -18,7 +18,7 @@ Page({
   },
   initMarkers:async function(){
     try {
-      const result = await app.netQuery("GET","/members/mapInfo");
+      const result = await app.netQuery("GET","/members");
       const iconPaths  = result.map((item)=>{
         return item.iconPath
       })
@@ -30,9 +30,10 @@ Page({
       result.forEach((item,index)=>{
         markers.push({
           ...item,
+          title:item.name,
           iconPath:fileUrls[index],
-          width:'50px',
-          height:'50px',
+          width:'19px',
+          height:'31px',
         })
       })
       console.log(markers);
@@ -41,10 +42,6 @@ Page({
       })
     } catch (error) {
       console.log(error);
-      wx.showToast({
-        icon:"error",
-        title: error.message,
-      })
     }
   }
 })

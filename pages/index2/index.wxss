@@ -1,0 +1,4 @@
+/* pages/index2/index.wxss */
+.container{
+  writing-mode: vertical-rl;
+}
