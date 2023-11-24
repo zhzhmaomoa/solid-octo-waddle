@@ -6,7 +6,6 @@
     "pages/chart/dataManagement/dataManagement",
     "pages/chart/chart",
     "pages/map/map",
-    "pages/logs/logs",
     "pages/chart/dataManagement/contribution/contribution",
     "pages/chart/dataManagement/contribution/managementMonthly/managementMonthly",
     "pages/chart/dataManagement/contribution/dataReport/dataReport"
@@ -17,5 +16,16 @@
     "navigationBarTextStyle": "white"
   },
   "style": "v2",
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "renderer":"skyline",
+  "lazyCodeLoading": "requiredComponents",
+  "componentFramework": "glass-easel",
+  "disableScroll": true,
+  "navigationStyle": "custom",
+  "rendererOptions": { 
+    "skyline": { 
+      "defaultDisplayBlock": true,
+      "defaultContentBox": true
+    } 
+  }
 }
