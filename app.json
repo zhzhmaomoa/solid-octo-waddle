@@ -1,6 +1,6 @@
 {
   "pages": [
-    "pages/index2/index",
+    "pages/index2/index2",
     "pages/index/index",
     "pages/map/map",
     "pages/chart/dataManagement/member/member",
@@ -13,12 +13,13 @@
   ],
   "style": "v2",
   "sitemapLocation": "sitemap.json",
-  "renderer": "skyline",
   "lazyCodeLoading": "requiredComponents",
-  "componentFramework": "glass-easel",
-  "rendererOptions": {
-    "skyline": {
-      "defaultDisplayBlock": true
-    }
+  "window": {
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "title",
+    "backgroundColor": "#eeeeee",
+    "backgroundTextStyle": "light",
+    "enablePullDownRefresh": true
   }
 }

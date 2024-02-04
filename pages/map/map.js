@@ -32,8 +32,8 @@ Page({
           ...item,
           title:item.name,
           iconPath:fileUrls[index],
-          width:'19px',
-          height:'31px',
+          width:'30px',
+          height:'40px',
         })
       })
       console.log(markers);

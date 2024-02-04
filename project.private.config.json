@@ -3,8 +3,7 @@
   "projectname": "solid-octo-waddle",
   "setting": {
     "compileHotReLoad": false,
-    "urlCheck": false,
-    "skylineRenderEnable": true
+    "urlCheck": false
   },
   "libVersion": "3.1.1"
 }
