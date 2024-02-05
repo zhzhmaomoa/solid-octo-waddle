@@ -1,0 +1,13 @@
+/* pages/redemptionCode/redemptionCode.wxss */
+.x{
+  display: flex;
+  column-gap: 20rpx;
+  margin:50rpx;
+}
+.content.active{
+  text-decoration: underline;
+  text-underline-offset: .25em;
+}
+.content{
+  text-decoration: line-through;
+}

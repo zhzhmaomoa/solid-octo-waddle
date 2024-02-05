@@ -1,0 +1,14 @@
+<!--pages/redemptionCode/redemptionCode.wxml-->
+<view>
+  <view class="x" wx:for="{{codes}}" wx:key="index">
+    <view>
+      {{item.source}}
+    </view>
+    <view class="content">
+      {{item.content}}
+    </view>
+    <view>
+      {{item.endTime}}
+    </view>
+  </view>
+</view>
