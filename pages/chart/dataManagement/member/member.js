@@ -147,7 +147,7 @@ Page({
       if(this.data.oldIconPath !== iconPath){
         console.log(this.data.oldIconPath);
         await app.assetsDelete(this.data.oldIconPath);
-        fileId = await app.assetsUpload(iconPath,name,'map-markers-icon');
+        fileId = await app.assetsUpload(iconPath,encodeUnicode(name),'map-markers-icon');
       }
       await app.netQuery('PUT','/members',{
         id,name,latitude,longitude,
@@ -160,3 +160,10 @@ Page({
     }
   }
 })
+function encodeUnicode(str) {
+  let res = [];
+  for (let i = 0; i < str.length; i++) {
+      res[i] = ("00" + str.charCodeAt(i).toString(16)).slice(-4);
+  }
+  return  res.join("");
+}

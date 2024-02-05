@@ -1,95 +1,65 @@
-const app = getApp()
+// pages/redemptionCode/redemptionCode.js
 Page({
+
+  /**
+   * 页面的初始数据
+   */
   data: {
-    hasAirplaneTakenOff:false,
-    images:[{
-        src:undefined,
-        class:undefined,
-        title:undefined,
-        date:undefined
-      }],
-    date:'',
-    title:''
   },
-  onReady(){
-    this.handleQuery();
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad(options) {
+
   },
-  toggleAirplaneStatus(){
-    this.setData({
-      hasAirplaneTakenOff:!this.data.hasAirplaneTakenOff
-    })
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady() {
+
   },
-  toChart(){
-    wx.navigateTo({
-      url: '/pages/chart/chart',
-    })
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow() {
+
   },
-  toMap(){
-    wx.navigateTo({
-      url: '/pages/map/map',
-    })
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide() {
+
   },
-  async handleQuery(){
-    try {
-      const res = await app.netQuery("GET","/memory/latest");
-      const processedRes = res.reverse().map((item,index)=>{
-        if(res.length-2===index){
-          this.setData({
-            date:item.date,
-            title:item.title,
-          })
-          return {
-            ...item,
-            class:'centerImage'
-          }
-        }else if(res.length-3 ===index){
-          return {
-            ...item,
-            class:'leftImage'
-          }
-        } else if(res.length-1===index){
-          return {
-            ...item,
-            class:'rightImage'
-          }
-        }else{
-          return {
-            ...item,
-            class:'leftOtherImage'
-          }
-        }
-      })
-      this.setData({
-        images:processedRes
-      })
-    } catch (error) {
-      console.log(error)
-    }
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload() {
+
   },
-  toggleImage(e){
-    const {pattern,patternIndex} = e.currentTarget.dataset;
-    if(pattern==="leftImage"){
-      const images = this.data.images;
-      images[patternIndex-1]&&(images[patternIndex-1].class = "leftImage")
-      images[patternIndex].class = "centerImage"
-      images[patternIndex+1]&&(images[patternIndex+1].class = "rightImage")
-      images[patternIndex+2]&&(images[patternIndex+2].class = "rightOtherImage")
-      this.setData({
-        images,
-        date:images[patternIndex].date,
-        title:images[patternIndex].title,
-      })
-    }else if(pattern === "rightImage"){
-      const images = this.data.images;
-      images[patternIndex+1]&&(images[patternIndex+1].class = "rightImage");
-      images[patternIndex].class = "centerImage"
-      images[patternIndex-1]&&(images[patternIndex-1].class = "leftImage")
-      images[patternIndex-2]&&(images[patternIndex-2].class = "leftOtherImage")
-      this.setData({
-        images,
-        date:images[patternIndex].date,
-        title:images[patternIndex].title,
-      })
-    }
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh() {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom() {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage() {
+
   }
 })
