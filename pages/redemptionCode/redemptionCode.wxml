@@ -1,14 +1,78 @@
 <!--pages/redemptionCode/redemptionCode.wxml-->
-<view>
-  <view class="x" wx:for="{{codes}}" wx:key="index">
-    <view>
-      {{item.source}}
+<view class="body">
+  <view 
+    class="x" 
+    wx:for="{{codes}}" 
+    wx:key="index" 
+    data-redemption-code="{{item.redemptionCode}}" 
+    data-index="{{index}}"
+    bindtap="{{item.deadlineActive?'handleCopy':''}}"
+    >
+    <image 
+      class="icon" 
+      src="{{item.type==='redemptionCode'?'../../assets/bear.svg':'../../assets/applet.svg'}}">
+    </image>
+    <view class="active {{item.deadlineActive?'content':''}} {{codesVisitedList[index]?'visited':''}}">
+      {{item.redemptionCode}}
     </view>
-    <view class="content">
-      {{item.content}}
+    <view class="deadline-x">
+      <view>
+        {{item.deadline[0]}}:
+      </view>
+      <view>
+        {{item.deadline[1]}}:
+      </view>
+      <view>
+        {{item.deadline[2]}}
+      </view>
     </view>
-    <view>
-      {{item.endTime}}
+    <view wx:if="item.purpleClothingEasterEgg">
+      {{item.purpleClothingEasterEgg}}
+    </view>
+    <view wx:if="item.purpleFurnitureEasterEgg">
+      {{item.purpleFurnitureEasterEgg}}
+    </view>
+    <view wx:if="yellowClothingEasterEgg">
+      {{item.yellowClothingEasterEgg}}
+    </view>
+    <view wx:if="yellowFurnitureEasterEgg">
+      {{item.yellowFurnitureEasterEgg}}
+    </view>
+    <view wx:if="redClothingEasterEgg">
+      {{item.redClothingEasterEgg}}
+    </view>
+    <view wx:if="redFurnitureEasterEgg">
+      {{item.redFurnitureEasterEgg}}
+    </view>
+    <view wx:if="friendshipStar">
+      {{item.friendshipStar}}
+    </view>
+    <view wx:if="heart">
+      {{item.heart}}
+    </view>
+    <view wx:if="diamond">
+      {{item.diamond}}
+    </view>
+    <view wx:if="goldCoin">
+      {{item.goldCoin}}
+    </view>
+    <view wx:if="furniture">
+      {{item.furniture}}
+    </view>
+    <view wx:if="clothing">
+      {{item.clothing}}
+    </view>
+    <view wx:if="action">
+      {{item.action}}
+    </view>
+    <view wx:if="house">
+      {{item.house}}
+    </view>
+    <view wx:if="appellation">
+      {{item.appellation}}
+    </view>
+    <view wx:if="potion">
+      {{item.potion}}
     </view>
   </view>
 </view>

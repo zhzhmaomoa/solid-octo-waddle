@@ -1,19 +1,29 @@
-// pages/redemptionCode/redemptionCode.js
+import {query} from "../../api/index.js"
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    images:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    this.handleQuery()
   },
-
+  async handleQuery(){
+    try {
+      const images = await query({'pageNum':1,'pageSize':8})
+      this.setData({
+        images
+      })
+    } catch (error) {
+      console.error(error)
+    }
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
