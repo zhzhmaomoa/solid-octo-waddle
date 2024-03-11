@@ -1,5 +1,6 @@
 // pages/redemptionCode/redemptionCode.js
 import {query} from "../../api/redemptionCode.js"
+import {baseUrl} from "../../env.js"
 Page({
   /**
    * 页面的初始数据
@@ -7,6 +8,7 @@ Page({
   data: {
     codes:[],
     codesVisitedList:[],
+    baseUrl
   },
   pageSize:8,
   /**
