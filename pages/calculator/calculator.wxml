@@ -1,0 +1,62 @@
+<!--pages/calculator.wxml-->
+<view class="x">
+  <form>
+    <view class="row h3"> 
+      <label for="currentNumber">当前拥有的晶钻数为:</label>
+      <input id="currentNumber" type="number" value="0"/>
+    </view>
+    <view class="h4">每日</view>
+    <view class="aside">
+      <checkbox-group>
+        <label class="row">
+          日常任务50个:
+          <checkbox value="daily"></checkbox>
+        </label>
+        <label class="row">
+          红宝石90个:
+          <checkbox value="ruby"></checkbox>
+        </label>
+        <label class="row">
+          精灵杜尔每次15～30个周奖励额外28/38个:
+          <checkbox value="duer"></checkbox>
+        </label>
+      </checkbox-group>
+      <view class="row">
+        <label for="order">惊喜订单</label>
+            <slider id="order" class="slider" min="0" max="50" step="5"   show-value="true"></slider>个
+      </view>  
+      <view class="row">
+        <label for="order">钻分享物</label>
+        <slider id="order" class="slider" min="0" max="100" step="1" show-value="true"></slider>个
+      </view>  
+      <view class="row">
+        <label for="order">钻饭</label>
+        <slider id="order" class="slider" min="0" max="100" step="1" show-value="true"></slider>个
+      </view>
+    </view>  
+    <view class="h4">每周</view>
+    <checkbox-group class="aside">
+      <label class="row">
+        扭蛋机100个:
+        <checkbox value="gachaMachine"></checkbox>
+      </label>
+      <label class="row">
+        刷派对50个:
+        <checkbox value="party"></checkbox>
+      </label>
+      <label class="row">
+        七日登陆20个:
+        <checkbox value="loginEveryWeek"></checkbox>
+      </label>
+      <label class="row">
+        每两周家族订单100个:
+        <checkbox value="family"></checkbox>
+      </label>
+      <label class="row">
+        周末连续登录周一领取120个:
+        <checkbox value="continuousLoginWeekend"></checkbox>
+      </label>
+    </checkbox-group>
+  </form>
+  <view>那么</view>
+</view>

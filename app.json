@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/calculator/calculator",
     "pages/redemptionCode/redemptionCode",
     "pages/index/index",
     "pages/map/map",
@@ -19,7 +20,6 @@
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "title",
     "backgroundColor": "#eeeeee",
-    "backgroundTextStyle": "light",
-    "pageOrientation": "landscape"
+    "backgroundTextStyle": "light"
   }
 }
