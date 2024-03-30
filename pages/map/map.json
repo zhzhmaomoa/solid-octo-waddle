@@ -2,5 +2,6 @@
   "usingComponents": {
     
   },
-  "pageOrientation": "auto"
+  "pageOrientation": "auto",
+  "navigationStyle":"custom"
 }

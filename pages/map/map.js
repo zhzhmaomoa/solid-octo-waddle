@@ -38,5 +38,13 @@ Page({
     } catch (error) {
       console.error(error)
     }
+  },
+  onResize(res) {
+    // console.log(res)
+    if(res.size.windowWidth>res.size.windowHeight){
+      wx.hideTabBar()
+    }else{
+      wx.showTabBar()
+    }
   }
 })
