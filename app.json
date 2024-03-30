@@ -3,16 +3,28 @@
     "pages/index/index",
     "pages/calculator/calculator",
     "pages/redemptionCode/redemptionCode",
-    "pages/redemptionCode/redemptionCode",
-    "pages/map/map",
-    "pages/chart/dataManagement/member/member",
-    "pages/chart/dataManagement/memory/memory",
-    "pages/chart/dataManagement/dataManagement",
-    "pages/chart/chart",
-    "pages/chart/dataManagement/contribution/contribution",
-    "pages/chart/dataManagement/contribution/managementMonthly/managementMonthly",
-    "pages/chart/dataManagement/contribution/dataReport/dataReport"
+    "pages/map/map"
   ],
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text":"首页"
+      },
+      {
+        "pagePath": "pages/map/map",
+        "text":"地图"
+      },
+      {
+        "pagePath": "pages/calculator/calculator",
+        "text":"计算器"
+      },
+      {
+        "pagePath": "pages/redemptionCode/redemptionCode",
+        "text":"兑换码"
+      }
+    ]
+  },
   "style": "v2",
   "sitemapLocation": "sitemap.json",
   "lazyCodeLoading": "requiredComponents",

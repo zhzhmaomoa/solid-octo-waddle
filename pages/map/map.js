@@ -4,17 +4,13 @@ Page({
   data: {
     latitude: 34.29078418888973,
     longitude: 108.9314268416977,
-    markers: [{
-      id: 1,
-      latitude: 23.099994,
-      longitude: 113.324520,
-      title: 'T.I.T 创意园',
-      iconPath:'',
-      width:'50px',
-      height:'50px'
-    }]
+    markers: []
 },
   onReady: function () {
+    wx.showToast({
+      title: '加载中',
+      icon:"loading"
+    })
     this.handleQuery();
   },
   async handleQuery(){
@@ -38,7 +34,7 @@ Page({
       this.setData({
         markers
       })
-      console.log(markers)
+      // console.log(markers)
     } catch (error) {
       console.error(error)
     }

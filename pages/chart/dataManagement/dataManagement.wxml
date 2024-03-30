@@ -1,5 +1,0 @@
-<view class="container">
-  <view class="item" bind:tap="toMemberManagement">族员管理</view>
-  <view class="item" bind:tap="toContributionManagement">贡献管理</view>
-  <view class="item" bind:tap="toMemory">回忆管理</view>
-</view>

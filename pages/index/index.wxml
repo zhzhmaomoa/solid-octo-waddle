@@ -1,3 +1,3 @@
 <view class="x">
-  <view class="img" style="{{imgStyle}}"></view>
+  <image wx:for="{{imgs}}" src="{{item.src}}" class="img" wx:key="index"></image>
 </view>

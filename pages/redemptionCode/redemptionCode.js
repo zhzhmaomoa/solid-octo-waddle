@@ -19,6 +19,7 @@ Page({
     this.setData({
       codesVisitedList: wx.getStorageSync('redemptionCodeVisited')||new Array(this.pageSize).fill(false)
     })
+    console.log(wx.getStorageSync('redemptionCodeVisited'))
   },
   async handleQuery(){
     try {
@@ -116,6 +117,7 @@ Page({
     clearInterval(this.timer)
     this.timer = null;
     wx.setStorageSync('redemptionCodeVisited', this.data.codesVisitedList)
+    console.log(wx.getStorageSync('redemptionCodeVisited'))
   },
 
   /**
