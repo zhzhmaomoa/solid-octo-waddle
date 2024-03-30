@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    images:[]
+    imgStyle:undefined
   },
 
   /**
@@ -17,9 +17,11 @@ Page({
   async handleQuery(){
     try {
       const images = await query({'pageNum':1,'pageSize':8})
-      this.setData({
-        images
-      })
+      // let imgStyle = "background:"+`url(${images[0].src}),url(${images[1].src})`
+      let imgStyle = "background-image:"+`url(${images[0].src})`
+     this.setData({
+       imgStyle
+     })
     } catch (error) {
       console.error(error)
     }

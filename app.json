@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/redemptionCode/redemptionCode",
     "pages/index/index",
+    "pages/redemptionCode/redemptionCode",
     "pages/map/map",
     "pages/chart/dataManagement/member/member",
     "pages/chart/dataManagement/memory/memory",
@@ -19,7 +19,6 @@
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "title",
     "backgroundColor": "#eeeeee",
-    "backgroundTextStyle": "light",
-    "pageOrientation": "landscape"
+    "backgroundTextStyle": "light"
   }
 }

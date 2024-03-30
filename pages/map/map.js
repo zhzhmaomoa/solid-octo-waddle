@@ -1,4 +1,5 @@
-const app = getApp()
+import {query} from "../../api/member.js"
+import {citys} from "../../assets/citys.js"
 Page({
   data: {
     latitude: 34.29078418888973,
@@ -14,54 +15,32 @@ Page({
     }]
 },
   onReady: function () {
-    this.initMarkers();
+    this.handleQuery();
   },
-  initMarkers:async function(){
+  async handleQuery(){
     try {
-      const result = await app.netQuery("GET","/members");
-      const iconPaths  = result.map((item)=>{
-        return item.iconPath
-      })
-      const {fileList} =await app.assetsQuery(iconPaths);
-      const fileUrls = fileList.map((item)=>{
-        return item.tempFileURL;
-      })
-      let markers = [];
-      result.forEach((item,index)=>{
-        markers.push({
-          ...item,
+      const arr = await query({'pageNum':1,'pageSize':50})
+      const markers = arr.map((item,index)=>{
+        const citysIndex = citys.findIndex((city)=>{return item.province===city.name});
+        const {subordinate,index:subordinateIndex} = citys[citysIndex];
+        const city = subordinate[subordinateIndex];
+        citys[citysIndex].index = (subordinate.length>subordinateIndex+1) ?(subordinateIndex+1):0;
+        return {
+          id: index,
+          latitude:city.latitude,
+          longitude:city.longitude,
           title:item.name,
-          iconPath:fileUrls[index],
-          width:'30px',
-          height:'40px',
-        })
+          iconPath:item.iconPath,
+          width:'50px',
+          height:'50px'
+        }
       })
-      console.log(markers);
       this.setData({
         markers
       })
+      console.log(markers)
     } catch (error) {
-      console.log(error);
+      console.error(error)
     }
   }
 })
-
-
-    // includePoints:[
-    //   {//漠河
-    //     longitude: '122.0758977',
-    //     latitude: '53.9060533'
-    //   },
-    //   {//曾母暗沙
-    //     longitude: '112.3099202',
-    //     latitude: '1.5739308'
-    //   },
-    //   {//帕米尔高原
-    //     longitude: '73.1505362',
-    //     latitude: '38.8598299'
-    //   },
-    //   {//黑龙江乌苏里江交汇
-    //     longitude: '135.8016182',
-    //     latitude: '48.4646511'
-    //   }
-    // ],

@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-    "dialog":"../../../component/dialog/dialog"
+    
   },
-  "pageOrientation":"landscape"
+  "pageOrientation": "auto"
 }

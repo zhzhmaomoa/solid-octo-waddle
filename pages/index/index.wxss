@@ -1,52 +1,12 @@
 /* pages/index2/index.wxss */
 .x{
   background-color: rgb(235,235,235);
-  display:grid;
   height: 100vh;
-  grid-template-rows: auto 25.5vh 3.77vh 25.5vh auto;
-  grid-template-columns: repeat(4,25.5vh);
-  grid-template-areas: 
-    "header header header header"
-    "a b c d"
-    "center center center center"
-    "e f g h"
-    "bottom bottom bottom bottom";
-  column-gap: 5.55vh;
-  justify-content: center;
-}
-.img-x{
-  height: 100%;
-  box-sizing: border-box;
-  background-color: rgb(219, 219, 219);
-  border:rgb(20, 21, 23) 2rpx solid;
-  padding: 1.33vh;
-  box-shadow:-2rpx .5rpx .25rpx rgb(203, 203, 203);
 }
 .img{
-  width: 100%;
-  height: 100%;
-}
-.img-x:nth-child(1){
-  grid-area: a;
-}
-.img-x:nth-child(2){
-  grid-area: b;
-}
-.img-x:nth-child(3){
-  grid-area: c;
-}
-.img-x:nth-child(4){
-  grid-area: d;
-}
-.img-x:nth-child(5){
-  grid-area: e;
-}
-.img-x:nth-child(6){
-  grid-area: f;
-}
-.img-x:nth-child(7){
-  grid-area: g;
-}
-.img-x:nth-child(8){
-  grid-area: h;
+  width: 61vw;
+  height: 61vw;
+  border-radius: 50%;
+  background-size: contain;
+  background-repeat: no-repeat;
 }

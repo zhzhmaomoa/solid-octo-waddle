@@ -4,6 +4,7 @@
 }
 .x{
   display: flex;
+  flex-wrap: wrap;
   column-gap: 20rpx;
   margin:50rpx;
   align-items: center;
