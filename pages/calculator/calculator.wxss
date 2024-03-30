@@ -1,0 +1,22 @@
+/* pages/calculator.wxss */
+.x{
+  padding-left: 5vw;
+}
+.h3{
+  font-size: larger;
+  margin: 2vw 0;
+}
+.h4{
+  font-size: large;
+  margin: 1vw 0;
+}
+.row{
+  display:flex;
+  align-items: center;
+}
+.aside{
+  padding-left: 5vw;
+}
+.slider{
+  width: 200rpx;
+}

@@ -12,8 +12,84 @@
       class="icon" 
       src="{{item.type==='redemptionCode'?'../../assets/bear.svg':'../../assets/applet.svg'}}">
     </image>
-    <view class="active {{item.deadlineActive?'content':''}} {{codesVisitedList[index]?'visited':''}}">
+    <view class="content {{item.deadlineActive?'active':''}} {{codesVisitedList[index]?'visited':''}}">
       {{item.redemptionCode}}
+    </view>
+    <view class="prop-x" wx:if="{{item.purpleClothingEasterEgg}}">
+      <image class="prop" mode="aspectFit" src="{{baseUrl}}/redemptionImg/purpleClothingEasterEgg.png"></image>
+      <view class="prop-number">{{item.purpleClothingEasterEgg}}</view>
+    </view>
+    <view class="prop-x" wx:if="{{item.purpleFurnitureEasterEgg}}">
+      <image class="prop" mode="aspectFit" src="{{baseUrl}}/redemptionImg/purpleFurnitureEasterEgg.png"></image>
+      <view class="prop-number">{{item.purpleFurnitureEasterEgg}}</view>
+    </view>
+    <view class="prop-x" wx:if="{{item.yellowClothingEasterEgg}}">
+      <image class="prop" mode="aspectFit" src="{{baseUrl}}/redemptionImg/yellowClothingEasterEgg.png"></image>
+      <view class="prop-number">{{item.yellowClothingEasterEgg}}</view>
+    </view>
+    <view class="prop-x" wx:if="{{item.yellowFurnitureEasterEgg}}">
+      <image class="prop" mode="aspectFit" src="{{baseUrl}}/redemptionImg/yellowFurnitureEasterEgg.png"></image>
+      <view class="prop-number">{{item.yellowFurnitureEasterEgg}}</view>
+    </view>
+    <view class="prop-x" wx:if="{{item.redClothingEasterEgg}}">
+      <image class="prop" mode="aspectFit" src="{{baseUrl}}/redemptionImg/redClothingEasterEgg.png"></image>
+      <view class="prop-number">{{item.redClothingEasterEgg}}</view>
+    </view>
+    <view class="prop-x" wx:if="{{item.redFurnitureEasterEgg}}">
+      <image class="prop" mode="aspectFit" src="{{baseUrl}}/redemptionImg/redFurnitureEasterEgg.png"></image>
+      <view class="prop-number">{{item.redFurnitureEasterEgg}}</view>
+    </view>
+    <view class="prop-x" wx:if="{{item.friendshipStar}}">
+      <image class="prop" mode="aspectFit" src="{{baseUrl}}/redemptionImg/friendshipStar.png"></image>
+      <view class="prop-number">{{item.friendshipStar}}</view>
+    </view>
+    <view class="prop-x" wx:if="{{item.heart}}">
+      <image class="prop" mode="aspectFit" src="{{baseUrl}}/redemptionImg/heart.png"></image>
+      <view class="prop-number">{{item.heart}}</view>
+    </view>
+    <view class="prop-x" wx:if="{{item.diamond}}">
+      <image class="prop" mode="aspectFit" src="{{baseUrl}}/redemptionImg/diamond.png"></image>
+      <view class="prop-number">{{item.diamond}}</view>
+    </view>
+    <view class="prop-x" wx:if="{{item.goldCoin}}">
+      <image class="prop" mode="aspectFit" src="{{baseUrl}}/redemptionImg/goldCoin.png"></image>
+      <view class="prop-number">{{item.goldCoin}}</view>
+    </view>
+    <view class="prop-x" wx:if="{{item.furniture}}">
+      <image class="prop" mode="aspectFit" src="{{baseUrl}}/redemptionImg/furniture.png"></image>
+      <view class="prop-number">{{item.furniture}}</view>
+    </view>
+    <view class="prop-x" wx:if="{{item.clothing}}">
+      <image class="prop" mode="aspectFit" src="{{baseUrl}}/redemptionImg/clothing.png"></image>
+      <view class="prop-number">{{item.clothing}}</view>
+    </view>
+    <view class="prop-x" wx:if="{{item.action}}">
+      <image class="prop" mode="aspectFit" src="{{baseUrl}}/redemptionImg/action.png"></image>
+      <view class="prop-number">{{item.action}}</view>
+    </view>
+    <view class="prop-x" wx:if="{{item.house}}">
+      <image class="prop" mode="aspectFit" src="{{baseUrl}}/redemptionImg/house.png"></image>
+      <view class="prop-number">{{item.house}}</view>
+    </view>
+    <view class="prop-x" wx:if="{{item.appellation}}">
+      <view class="prop">称号</view>
+      <view class="prop-number">{{item.appellation}}</view>
+    </view>
+    <view class="prop-x" wx:if="{{item.potion}}">
+      <image class="prop" mode="aspectFit" src="{{baseUrl}}/redemptionImg/potion.png"></image>
+      <view class="prop-number">{{item.potion}}</view>
+    </view>
+    <view class="prop-x" wx:if="{{item.petWhistle}}">
+      <image class="prop" mode="aspectFit" src="{{baseUrl}}/redemptionImg/petWhistle.png"></image>
+      <view class="prop-number">{{item.petWhistle}}</view>
+    </view>
+    <view class="prop-x" wx:if="{{item.chronoTrigger}}">
+      <image class="prop" mode="aspectFit" src="{{baseUrl}}/redemptionImg/chronoTrigger.png"></image>
+      <view class="prop-number">{{item.chronoTrigger}}</view>
+    </view>
+    <view class="prop-x" wx:if="{{item.circulationPass}}">
+      <image class="prop" mode="aspectFit" src="{{baseUrl}}/redemptionImg/circulationPass.png"></image>
+      <view class="prop-number">{{item.circulationPass}}</view>
     </view>
     <view class="deadline-x">
       <view>
@@ -25,54 +101,6 @@
       <view>
         {{item.deadline[2]}}
       </view>
-    </view>
-    <view wx:if="item.purpleClothingEasterEgg">
-      {{item.purpleClothingEasterEgg}}
-    </view>
-    <view wx:if="item.purpleFurnitureEasterEgg">
-      {{item.purpleFurnitureEasterEgg}}
-    </view>
-    <view wx:if="yellowClothingEasterEgg">
-      {{item.yellowClothingEasterEgg}}
-    </view>
-    <view wx:if="yellowFurnitureEasterEgg">
-      {{item.yellowFurnitureEasterEgg}}
-    </view>
-    <view wx:if="redClothingEasterEgg">
-      {{item.redClothingEasterEgg}}
-    </view>
-    <view wx:if="redFurnitureEasterEgg">
-      {{item.redFurnitureEasterEgg}}
-    </view>
-    <view wx:if="friendshipStar">
-      {{item.friendshipStar}}
-    </view>
-    <view wx:if="heart">
-      {{item.heart}}
-    </view>
-    <view wx:if="diamond">
-      {{item.diamond}}
-    </view>
-    <view wx:if="goldCoin">
-      {{item.goldCoin}}
-    </view>
-    <view wx:if="furniture">
-      {{item.furniture}}
-    </view>
-    <view wx:if="clothing">
-      {{item.clothing}}
-    </view>
-    <view wx:if="action">
-      {{item.action}}
-    </view>
-    <view wx:if="house">
-      {{item.house}}
-    </view>
-    <view wx:if="appellation">
-      {{item.appellation}}
-    </view>
-    <view wx:if="potion">
-      {{item.potion}}
     </view>
   </view>
 </view>

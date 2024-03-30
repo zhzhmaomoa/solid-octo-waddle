@@ -1,6 +1,8 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/calculator/calculator",
+    "pages/redemptionCode/redemptionCode",
     "pages/redemptionCode/redemptionCode",
     "pages/map/map",
     "pages/chart/dataManagement/member/member",

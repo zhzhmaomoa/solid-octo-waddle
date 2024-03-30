@@ -27,7 +27,20 @@
 }
 .deadline-x{
   display: flex;
+  margin-left: auto;
 }
-a:visited{
-  color:red
+.prop-x{
+  position: relative;
+}
+.prop{
+  width: 20rpx;
+  height: 30rpx;
+}
+.prop-number{
+  position: absolute;
+  left:2rpx;top:13rpx;right:0;bottom:0;
+  width: fit-content;
+  height: 10rpx;
+  margin:auto 0 auto auto;
+  font-size: 9rpx;
 }
