@@ -1,8 +1,8 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/calculator/calculator",
     "pages/redemptionCode/redemptionCode",
+    "pages/calculator/calculator",
     "pages/map/map"
   ],
   "tabBar": {
@@ -33,6 +33,8 @@
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "title",
     "backgroundColor": "#eeeeee",
-    "backgroundTextStyle": "light"
+    "backgroundTextStyle": "light",
+    "enablePullDownRefresh": false,
+    "disableScroll":true
   }
 }

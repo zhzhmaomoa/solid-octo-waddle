@@ -10,6 +10,13 @@
     "miniprogram": {
       "list": [
         {
+          "name": "pages/redemptionCode/redemptionCode",
+          "pathName": "pages/redemptionCode/redemptionCode",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "pages/calculator/calculator",
           "pathName": "pages/calculator/calculator",
           "query": "",

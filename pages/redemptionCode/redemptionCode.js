@@ -1,16 +1,12 @@
 // pages/redemptionCode/redemptionCode.js
 import {query} from "../../api/redemptionCode.js"
-import {baseUrl} from "../../env.js"
 Page({
-  /**
-   * 页面的初始数据
-   */
   data: {
     codes:[],
     codesVisitedList:[],
-    baseUrl
+    timeList:[]
   },
-  pageSize:8,
+  pageSize:6,
   /**
    * 生命周期函数--监听页面加载
    */
@@ -23,64 +19,57 @@ Page({
   },
   async handleQuery(){
     try {
-      const codes = await query({'pageNum':1,'pageSize':this.pageSize})
-      this.countdown(codes);
+      const codes = await query({'pageNum':1,'pageSize':this.pageSize});
+      this.splitCodes(codes);
     } catch (error) {
       console.error(error)
     }
   },
-  timer:null,
-  countdown(codes){
-    const date2 = new Date();
+  splitCodes(codes){
+    const targetCodes = [], timeList = [];
     for(let i = 0; i < codes.length; i++){
-      const deadline = new Date(codes[i].deadline);
-      let timeInterval = parseInt((deadline-date2)/1000);
-      const seconds = timeInterval%60;
-      timeInterval = parseInt(timeInterval/60);
-      const minutes = timeInterval%60;
-      timeInterval =  parseInt(timeInterval/60);
-      const hours = timeInterval;
-      const dateArr = [hours>0?hours:0,minutes>0?minutes:0,seconds>0?seconds:0];
-      const result = dateArr.reduce((pv,cv)=>{return pv+cv},0);
-      if(result<=0){
-        codes[i].deadlineActive = false
-      }else{
-        codes[i].deadlineActive = true;
-      }
-      codes[i].deadline  = dateArr;
+      const {deadline,...extra} = codes[i];
+      targetCodes.push({...extra, status:i===0?'current':'', clicked:false});
+      timeList.push(computeTimeItem(deadline))
     }
+    this.setData({codes:targetCodes});
+    this.countdown(timeList);
+  },
+  timer:null,
+  countdown(timeList){
     this.timer = setInterval(()=>{
-      for(let i = 0; i < codes.length; i++){
-        if(codes[i].deadlineActive){
-          const result = codes[i].deadline.reduce((pv,cv)=>{return pv+cv},0);
+      for(let i = 0; i < timeList.length; i++){
+        if(timeList[i].deadlineActive){
+          const result = timeList[i].deadline.reduce((pv,cv)=>{return pv+cv},0);
           if(result <= 0){
-            codes[i].deadlineActive = false;
+            timeList[i].deadlineActive = false;
             continue;
           }
         }else{
           continue;
         }
-        codes[i].deadline[2]--;
-        if(codes[i].deadline[2]<0){
-          codes[i].deadline[1]--;
-          codes[i].deadline[2] = 59;
-          if(codes[i].deadline[1]<0){
-            codes[i].deadline[0]--;
-            codes[i].deadline[1] = 59;
-            if(codes[i].deadline[0]<=0){
-              codes[i].deadline = [0,0,0]
+        timeList[i].deadline[2]--;
+        if(timeList[i].deadline[2]<0){
+          timeList[i].deadline[1]--;
+          timeList[i].deadline[2] = 59;
+          if(timeList[i].deadline[1]<0){
+            timeList[i].deadline[0]--;
+            timeList[i].deadline[1] = 59;
+            if(timeList[i].deadline[0]<=0){
+              timeList[i].deadline = [0,0,0]
               continue;
             }
           }
         }
       }
       this.setData({
-        codes
+        timeList
       })
     },1000)
   },
   handleCopy(e){
-    const {redemptionCode,index} =  e.currentTarget.dataset
+    console.log(e)
+    const {redemptionCode,index} =  e.detail
     wx.setClipboardData({
       data:redemptionCode
     })
@@ -89,30 +78,7 @@ Page({
       codesVisitedList:this.data.codesVisitedList
     })
   },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
 
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
   onUnload() {
     clearInterval(this.timer)
     this.timer = null;
@@ -120,24 +86,20 @@ Page({
     console.log(wx.getStorageSync('redemptionCodeVisited'))
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
-  }
 })
+const dateNow = new Date();
+function computeTimeItem(deadlineString){
+  const deadline = new Date(deadlineString);
+  let timeInterval = parseInt((deadline-dateNow)/1000);
+  const seconds = timeInterval%60;
+  timeInterval = parseInt(timeInterval/60);
+  const minutes = timeInterval%60;
+  timeInterval =  parseInt(timeInterval/60);
+  const hours = timeInterval;
+  const dateArr = [hours>0?hours:0,minutes>0?minutes:0,seconds>0?seconds:0];
+  const result = dateArr.reduce((pv,cv)=>{return pv+cv},0);
+  return {
+    deadlineActive : result<=0?false:true,
+    deadline:dateArr
+  }
+}
