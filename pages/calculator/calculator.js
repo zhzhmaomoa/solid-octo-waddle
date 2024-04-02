@@ -1,29 +1,24 @@
-// pages/calculator.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-    diamondFuture:0
+    diamondFuture:0,
+    diamondRainActive:false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
-  },
-  diamondMap:{
-    daily:50,
-    ruby:90,
-    duer:()=>{return Math.floor(Math.random()*16) + 15},
-    duerWeekSettlement:()=>{return Math.random()<0.5?28:38},
-    gachaMachine:100,
-    party:50,
-    continuousLoginWeekend:120,
-    family:50,
-    loginEveryWeek:20
+    this.diamondMap = {
+      daily:50,
+      ruby:90,
+      duer:()=>{return Math.floor(Math.random()*16) + 15},
+      duerWeekSettlement:()=>{return Math.random()<0.5?28:38},
+      gachaMachine:100,
+      party:50,
+      continuousLoginWeekend:120,
+      family:50,
+      loginEveryWeek:20
+    };
   },
   compute(e){
     console.log(e)
@@ -39,6 +34,9 @@ Page({
     .reduce((prev,curr)=>{return prev+curr},0)
     console.log(diamondFuture)
     this.setData({diamondFuture})
+  },
+  switchDiamondRainActive(){
+    this.setData({diamondRainActive:!this.data.diamondRainActive})
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
