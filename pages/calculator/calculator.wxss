@@ -1,6 +1,10 @@
 /* pages/calculator.wxss */
+.rain{
+  position: absolute;
+}
 .x{
   padding-left: 5vw;
+  position: absolute
 }
 .h3{
   font-size: larger;
@@ -19,4 +23,8 @@
 }
 .slider{
   width: 200rpx;
+}
+.input{
+  border-bottom: solid 1rpx black;
+  width: 100rpx;
 }

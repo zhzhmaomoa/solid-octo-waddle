@@ -1,8 +1,10 @@
+import {baseUrl} from "../../env.js"
 let width = 0;
 let height = 0;
 let canvas = undefined;
 let ctx = undefined;
 let img = undefined;
+let playGround = undefined;
 Component({
   lifetimes:{
     attached:function(){
@@ -14,6 +16,9 @@ Component({
         })
         .exec(this.init.bind(this))
     }
+  },
+  properties:{
+    diamondFuture:''
   },
   methods: {
     init(res) {
@@ -29,22 +34,31 @@ Component({
       imgTemp.onload = ()=>{
         img  = imgTemp
       }
-      imgTemp.src = "/assets/strawberries.png"
-      new PlayGround();
+      imgTemp.src = baseUrl+'/redemptionImg/diamond.png'
     },
+    render(){
+      if(playGround){
+        playGround.destory();
+      }
+      playGround = new PlayGround(parseInt( this.data.diamondFuture/1000 + ''));
+    }
   }
 })
 class PlayGround{
-  constructor(){
+  constructor(wave){
+    this.wave = wave;
     this.startTime;
     this.circleList = [];
     this.createCircleList();
     canvas.requestAnimationFrame(this.render.bind(this));
   }
+  destory(){
+    ctx.clearRect(0,0,width,height)
+  }
   createCircleList(){
     let num = 0;
     let timer = setInterval(()=>{
-      if(num >=10){
+      if(num >= this.wave || num >=20){
         clearInterval(timer);
         timer = null;
       }
@@ -111,7 +125,7 @@ class Circle{
   }
   draw(){
     if(!img)return;
-    ctx.drawImage(img,this.x,this.y,this.r,this.r)
+    ctx.drawImage(img,this.x,this.y,this.r * 2 ,this.r * 3)
   }
   checkCollideWith(that){
     const squareDistance = Math.pow( ( this.x-that.x ), 2 ) 
@@ -159,16 +173,16 @@ class Circle{
   checkEdgeCollision(){
     const cor = 0.8;    
     const {x,y,r,vx,vy} = this;
-    if(x >= width - r ){
+    if(x >= width - r * 2 ){
       this.vx = -vx * cor;
-      this.x = width - r;
+      this.x = width - r * 2;
     }else if(x <= r){	
       this.vx = -vx * cor;
       this.x = r;
     }
-    if(y >= height - r){ 
+    if(y >= height - r * 3 ){ 
       this.vy = -vy * cor ;
-      this.y = height-r;
+      this.y = height - r * 3;
     }else if( y <= r){
       this.vy = -vy * cor;
       this.y = r;

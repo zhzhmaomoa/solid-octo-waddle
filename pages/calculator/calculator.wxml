@@ -1,11 +1,10 @@
 <!--pages/calculator.wxml-->
-<diamond-rain style="position: absolute;top:0" wx:if="{{diamondRainActive}}"></diamond-rain>
-<view class="x" style="position: absolute;top:0">
-  <button capture-bind:tap="switchDiamondRainActive">切换</button>
-  <!-- <form bindsubmit="compute">
+<diamond-rain id="rain" class="rain" diamondFuture="{{diamondFuture}}"></diamond-rain>
+<view class="x">
+  <form bindsubmit="compute">
     <view class="row h3"> 
       <label for="currentNumber">当前拥有的晶钻数为:</label>
-      <input id="currentNumber" type="number" name="diamondCurrent" value="0"/>
+      <input class="input" id="currentNumber" type="number" name="diamondCurrent" value="0"/>
     </view>
     <view class="h4">每日</view>
     <view class="aside">
@@ -60,9 +59,9 @@
       </label>
     </checkbox-group>
     <view class="row h4">
-      <input type="number" name="duration" value="1"></input>周后
+      <input class="input" type="number" name="duration" value="1"></input>周后
     </view>
     <button form-type="submit">计算</button>
   </form>
-  <view>拥有的晶钻数为{{diamondFuture}}</view> -->
+  <view>拥有的晶钻数为{{diamondFuture}}</view>
 </view>
