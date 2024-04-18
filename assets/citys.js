@@ -2453,7 +2453,7 @@ export const citys = [
     },
     {
         "index": 0,
-        "name": "香港特别行政区",
+        "name": "香港",
         "subordinate": [
             {
                 "name": "中西区",
@@ -2549,7 +2549,7 @@ export const citys = [
     },
     {
         "index": 0,
-        "name": "澳门特别行政区",
+        "name": "澳门",
         "subordinate": [
             {
                 "name": "花地玛堂区",

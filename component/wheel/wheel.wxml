@@ -91,8 +91,12 @@
           <view class="prop-number">{{item.house}}</view>
         </view>
         <view class="prop-x" wx:if="{{item.appellation}}">
-          <view class="prop">文字</view>
+          <image class="prop" mode="aspectFit" src="{{baseUrl}}/redemptionImg/appellation.png"></image>
           <view class="prop-number">{{item.appellation}}</view>
+        </view>
+        <view class="prop-x" wx:if="{{item.points}}">
+          <image class="prop" mode="aspectFit" src="{{baseUrl}}/redemptionImg/points.png"></image>
+          <view class="prop-number">{{item.points}}</view>
         </view>
         <view class="prop-x" wx:if="{{item.potion}}">
           <image class="prop" mode="aspectFit" src="{{baseUrl}}/redemptionImg/potion.png"></image>
