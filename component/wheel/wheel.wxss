@@ -26,10 +26,10 @@
 .piece.active{
   transform: var(--pieceTransform) rotateY(180deg);
 }
-.piece:nth-child(2n){
+.piece.yellow{
   background-color: #f8df70;
 }
-.piece:nth-child(2n+1){
+.piece.green{
   background-color: #5dbe8a;
 }
 .face,.back{

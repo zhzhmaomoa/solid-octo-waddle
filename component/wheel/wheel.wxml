@@ -8,7 +8,7 @@
     <view 
       wx:for="{{codes}}"
       wx:key="index"
-      class="piece {{item.clicked?'active':''}}" 
+      class="piece {{item.clicked?'active':''}} {{item.type==='redemptionCode'?'green':'yellow'}}" 
       style="--index:{{index}}" 
       data-index="{{index}}" 
       bind:tap="handleItemClicked">
