@@ -5,6 +5,7 @@ let canvas = undefined;
 let ctx = undefined;
 let img = undefined;
 let playGround = undefined;
+let canvasFrameId = undefined;
 Component({
   lifetimes:{
     attached:function(){
@@ -50,9 +51,10 @@ class PlayGround{
     this.startTime;
     this.circleList = [];
     this.createCircleList();
-    canvas.requestAnimationFrame(this.render.bind(this));
+    canvasFrameId = canvas.requestAnimationFrame(this.render.bind(this));
   }
   destory(){
+    canvas.cancelAnimationFrame(canvasFrameId)
     ctx.clearRect(0,0,width,height)
   }
   createCircleList(){
@@ -102,7 +104,7 @@ class PlayGround{
       this.circleList[i].draw();
     }
     this.checkCircleCollision();
-    canvas.requestAnimationFrame(this.render.bind(this))
+    canvasFrameId = canvas.requestAnimationFrame(this.render.bind(this))
   }
 }
 class Circle{
