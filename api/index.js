@@ -5,9 +5,9 @@ export function query(data){
       url:baseUrl+"/api/memory",
       data,
       method:'GET',
-      header:{
-        'Content-Type':'application/x-www-form-urlencoded'
-      },
+      // header:{
+      //   'Content-Type':'application/x-www-form-urlencoded'
+      // },
       success(res){
         if(res.data.code===200){
           resolve(res.data.data);
