@@ -5,9 +5,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    imgs:[]
+    imgs:[],
+    imgsWidth:[]
   },
-
+  windowHeight:0,
   /**
    * 生命周期函数--监听页面加载
    */
@@ -16,12 +17,25 @@ Page({
   },
   async handleQuery(){
     try {
-      const imgs = await query({'pageNum':1,'pageSize':8})
-     this.setData({
-       imgs
-     })
+      const imgs = await query({'pageNum':1,'pageSize':100})
+      this.setData({
+        imgs
+      })
+      this.windowHeight = wx.getWindowInfo().windowHeight
     } catch (error) {
       console.error(error)
+    }
+  },
+  handleImgLoaded(e){
+    const {width,height} = e.detail;
+    const {index}  = e.target.dataset;
+    const radio = width/height;
+    const actualWidth = radio * this.windowHeight/4;
+    this.data.imgsWidth[index] = Math.floor(actualWidth/2);
+    if(this.data.imgsWidth.length===this.data.imgs.length){
+      this.setData({
+        imgsWidth:this.data.imgsWidth
+      })
     }
   },
   /**
