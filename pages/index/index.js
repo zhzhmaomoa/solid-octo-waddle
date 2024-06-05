@@ -30,7 +30,7 @@ Page({
     const {width,height} = e.detail;
     const {index}  = e.target.dataset;
     const radio = width/height;
-    const actualWidth = radio * this.windowHeight/4;
+    const actualWidth = radio * (this.windowHeight-50)/4;//50指行间距加padding
     this.data.imgsWidth[index] = Math.floor(actualWidth/2);
     if(this.data.imgsWidth.length===this.data.imgs.length){
       this.setData({

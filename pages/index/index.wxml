@@ -2,10 +2,10 @@
   <image 
     wx:for="{{imgs}}"
     wx:key="index"
-    class="img"
+    class="img {{item.active?'active':''}}"
     src="{{item.src}}"
     data-index="{{index}}" 
     bindload="handleImgLoaded" 
-    style="grid-column-end: span {{imgsWidth[index]}}"
+    style="grid-column-end: span {{imgsWidth[index]+5}};width:{{imgsWidth[index]*2}}px"
   ></image>
 </view>
