@@ -32,11 +32,11 @@ Page({
     const radio = width/height;
     const actualWidth = radio * (this.windowHeight-50)/4;//50指行间距加padding
     this.data.imgsWidth[index] = Math.floor(actualWidth/2);
-    if(this.data.imgsWidth.length===this.data.imgs.length){
+    // if(this.data.imgsWidth.length%2===0||this.data.imgsWidth.length===this.data.imgs.length){
       this.setData({
         imgsWidth:this.data.imgsWidth
       })
-    }
+    // }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
