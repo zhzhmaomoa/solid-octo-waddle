@@ -3,5 +3,6 @@
     
   },
   "pageOrientation": "auto",
-  "navigationStyle":"custom"
+  "navigationStyle":"custom",
+  "navigationBarTitleText":"地图"
 }

@@ -1,5 +1,6 @@
 {
   "usingComponents": {
     "wheel":"/component/wheel/wheel"
-  }
+  },
+  "navigationBarTitleText":"兑换码"
 }

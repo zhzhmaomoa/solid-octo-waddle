@@ -2,7 +2,7 @@
   <image 
     wx:for="{{imgs}}"
     wx:key="index"
-    class="img {{item.active?'active':''}}"
+    class="img"
     src="{{item.src}}"
     data-index="{{index}}" 
     bindload="handleImgLoaded" 
