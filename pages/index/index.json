@@ -1,4 +1,6 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText":"标题"
+  "navigationBarTitleText":"标题",
+  "navigationStyle":"custom",
+  "pageOrientation": "auto"
 }

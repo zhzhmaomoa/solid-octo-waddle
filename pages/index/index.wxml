@@ -1,11 +1,39 @@
-<view class="page">
-  <image 
-    wx:for="{{imgs}}"
-    wx:key="index"
-    class="img"
-    src="{{item.src}}"
-    data-index="{{index}}" 
-    bindload="handleImgLoaded" 
-    style="grid-column-end: span {{imgsWidth[index]+5}};width:{{imgsWidth[index]*2}}px"
-  ></image>
+<view class="x">
+  <view class="photo-x" catchtouchstart="onTouchStart" catchtouchmove="onTouchMove" catchtouchend="onTouchEnd">
+    <view class="line">
+      <view class="img-x" wx:for="{{lineOneImgs}}" wx:key="index" id="imgX{{index}}" style="transform:translate3d({{imgConfigs[index].moveX||0}}px,{{imgConfigs[index].moveY||0}}px,0);transition:{{imgConfigs[index].aniDuration}}s ease">
+        <image class="img" src="{{item}}" mode="aspectFill"></image>
+      </view>
+    </view>
+    <view class="line">
+      <view class="img-x" wx:for="{{lineTwoImgs}}" wx:key="index" id="imgX{{index+7}}" style="transform:translate3d({{imgConfigs[7+index].moveX||0}}px,{{imgConfigs[7+index].moveY||0}}px,0);transition:{{imgConfigs[7+index].aniDuration}}s ease">
+        <image class="img" src="{{item}}" mode="aspectFill"></image>
+      </view>
+    </view>
+    <view class="line">
+      <view class="img-x" wx:for="{{lineThreeImgs}}" wx:key="index" id="imgX{{index+14}}" style="transform:translate3d({{imgConfigs[14+index].moveX||0}}px,{{imgConfigs[14+index].moveY||0}}px,0);transition:{{imgConfigs[14+index].aniDuration}}s ease">
+        <image class="img" src="{{item}}" mode="aspectFill"></image>
+      </view>
+    </view>
+    <view class="line">
+      <view class="img-x" wx:for="{{lineFourImgs}}" wx:key="index" id="imgX{{index+21}}" style="transform:translate3d({{imgConfigs[21+index].moveX||0}}px,{{imgConfigs[21+index].moveY||0}}px,0);transition:{{imgConfigs[21+index].aniDuration}}s ease">
+        <image class="img" src="{{item}}" mode="aspectFill"></image>
+      </view>
+    </view>
+    <view class="line">
+      <view class="img-x" wx:for="{{lineFiveImgs}}" wx:key="index" id="imgX{{index+28}}" style="transform:translate3d({{imgConfigs[28+index].moveX||0}}px,{{imgConfigs[28+index].moveY||0}}px,0);transition:{{imgConfigs[28+index].aniDuration}}s ease">
+        <image class="img" src="{{item}}" mode="aspectFill"></image>
+      </view>
+    </view>
+    <view class="line">
+      <view class="img-x" wx:for="{{lineSixImgs}}" wx:key="index" id="imgX{{index+35}}" style="transform:translate3d({{imgConfigs[35+index].moveX||0}}px,{{imgConfigs[35+index].moveY||0}}px,0);transition:{{imgConfigs[35+index].aniDuration}}s ease">
+        <image class="img" src="{{item}}" mode="aspectFill"></image>
+      </view>
+    </view>
+    <view class="line">
+      <view class="img-x" wx:for="{{lineSevenImgs}}" wx:key="index" id="imgX{{index+42}}" style="transform:translate3d({{imgConfigs[42+index].moveX||0}}px,{{imgConfigs[42+index].moveY||0}}px,0);transition:{{imgConfigs[42+index].aniDuration}}s ease">
+        <image class="img" src="{{item}}" mode="aspectFill"></image>
+      </view>
+    </view>
+  </view>
 </view>
