@@ -53,7 +53,7 @@ Page({
         moveX:0,//横向偏移值
         moveY:0,//纵向偏移值
         aniDuration:1,//动画时长
-        url:`https://fami.zhzhmaomoa.pet/photo.png`,//图片地址
+        url:`https://fami.zhzhmaomoa.pet/assets/photo.webp`,//图片地址
       }
     })) 
   },
@@ -84,7 +84,7 @@ Page({
             moveX:0,//横向偏移值
             moveY:0,//纵向偏移值
             aniDuration:1,//动画时长
-            url:`https://fami.zhzhmaomoa.pet/photo.png`,//图片地址
+            url:`https://fami.zhzhmaomoa.pet/assets/photo.webp`,//图片地址
           }
         }))
         resolve()

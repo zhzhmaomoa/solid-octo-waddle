@@ -7,7 +7,7 @@
   height: 100vh;
   background-color: #171717;
   overflow: hidden;
-  background: url("https://fami.zhzhmaomoa.pet/bg.png") center / cover no-repeat;
+  background: url("https://fami.zhzhmaomoa.pet/assets/bg.webp") center / cover no-repeat;
 }
 .photo-x{
   display: flex;
