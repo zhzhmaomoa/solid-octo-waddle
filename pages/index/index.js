@@ -101,7 +101,7 @@ Page({
       observer.relativeToViewport().observe(`#imgX${index}`, (res) => {
         const nextImg = imgsHouse.shift()
         if(nextImg){
-          console.log(nextImg)
+          // console.log(nextImg)
           this.updateImgConfigs([
             ...this.data.imgConfigs.slice(0,index),
             {

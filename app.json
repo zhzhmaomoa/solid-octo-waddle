@@ -1,7 +1,6 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/redemptionCode/redemptionCode",
     "pages/calculator/calculator",
     "pages/map/map"
   ],
@@ -18,10 +17,6 @@
       {
         "pagePath": "pages/calculator/calculator",
         "text":"计算器"
-      },
-      {
-        "pagePath": "pages/redemptionCode/redemptionCode",
-        "text":"兑换码"
       }
     ]
   },
