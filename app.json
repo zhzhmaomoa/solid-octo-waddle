@@ -8,15 +8,15 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text":"首页"
+        "text":"memory"
       },
       {
         "pagePath": "pages/map/map",
-        "text":"地图"
+        "text":"map"
       },
       {
         "pagePath": "pages/calculator/calculator",
-        "text":"计算器"
+        "text":"calculator"
       }
     ]
   },
