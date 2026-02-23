@@ -1,67 +1,131 @@
 <!--pages/calculator.wxml-->
+<!-- 飘钻动画组件：计算完成后由 js 主动触发 render -->
 <diamond-rain id="rain" class="rain" diamondFuture="{{diamondFuture}}"></diamond-rain>
-<view class="x">
-  <form bindsubmit="compute">
-    <view class="row h3"> 
-      <label for="currentNumber">当前拥有的晶钻数为:</label>
-      <input class="input" id="currentNumber" type="number" name="diamondCurrent" value="0"/>
+
+<!-- 页面主容器 -->
+<view class="page">
+  <!-- 顶部标题区域 -->
+  <view class="header">
+    <view class="title">晶钻收益计算器</view>
+    <view class="subtitle">分步填写，快速得到预估结果</view>
+  </view>
+
+  <!-- 步骤进度条：根据 step 高亮已到达步骤 -->
+  <view class="progress">
+    <view class="step-chip {{step >= 0 ? 'active' : ''}}">1 基础</view>
+    <view class="step-chip {{step >= 1 ? 'active' : ''}}">2 每日</view>
+    <view class="step-chip {{step >= 2 ? 'active' : ''}}">3 每周</view>
+  </view>
+
+  <!-- Step 1: 基础信息 -->
+  <!-- wx:if / wx:elif 确保同一时刻只渲染一个步骤内容 -->
+  <view class="card" wx:if="{{step === 0}}">
+    <view class="section-title">基础信息</view>
+
+    <!-- 当前晶钻输入：data-field 指定更新 formData.diamondCurrent -->
+    <view class="field">
+      <view class="field-label">当前拥有晶钻</view>
+      <input class="text-input" type="number" data-field="diamondCurrent" value="{{formData.diamondCurrent}}" bindinput="onNumberInput" />
     </view>
-    <view class="h4">每日</view>
-    <view class="aside">
-      <checkbox-group name="itemsEveryDay">
-        <label class="row">
-          日常任务50个:
-          <checkbox value="daily"></checkbox>
-        </label>
-        <label class="row">
-          红宝石90个:
-          <checkbox value="ruby"></checkbox>
-        </label>
-        <label class="row">
-          精灵杜尔每次15～30个周奖励额外28/38个:
-          <checkbox value="duer"></checkbox>
-        </label>
-      </checkbox-group>
-      <view class="row">
-        <label for="order">惊喜订单</label>
-            <slider id="order" name="order" class="slider" min="0" max="50" step="5"   show-value="true"></slider>个
-      </view>  
-      <view class="row">
-        <label for="diamondShared">钻分享物</label>
-        <slider id="diamondShared" name="diamondShared" class="slider" min="0" max="100" step="1" show-value="true"></slider>个
-      </view>  
-      <view class="row">
-        <label for="diamondFood">钻饭</label>
-        <slider id="diamondFood" name="diamondFood" class="slider" min="0" max="100" step="1" show-value="true"></slider>个
+
+    <!-- 周期输入 + 快捷周数按钮 -->
+    <view class="field">
+      <view class="field-label">计算周期（周）</view>
+      <input class="text-input" type="number" data-field="duration" value="{{formData.duration}}" bindinput="onNumberInput" />
+      <view class="quick-actions">
+        <button class="quick-btn" size="mini" data-field="duration" data-value="1" bindtap="setQuickValue">1周</button>
+        <button class="quick-btn" size="mini" data-field="duration" data-value="2" bindtap="setQuickValue">2周</button>
+        <button class="quick-btn" size="mini" data-field="duration" data-value="4" bindtap="setQuickValue">4周</button>
       </view>
-    </view>  
-    <view class="h4">每周</view>
-    <checkbox-group class="aside" name="itemsEveryWeek">
-      <label class="row">
-        扭蛋机100个:
-        <checkbox value="gachaMachine"></checkbox>
-      </label>
-      <label class="row">
-        刷派对50个:
-        <checkbox value="party"></checkbox>
-      </label>
-      <label class="row">
-        七日登陆20个:
-        <checkbox value="loginEveryWeek"></checkbox>
-      </label>
-      <label class="row">
-        每两周家族订单100个:
-        <checkbox value="family"></checkbox>
-      </label>
-      <label class="row">
-        周末连续登录周一领取120个:
-        <checkbox value="continuousLoginWeekend"></checkbox>
-      </label>
-    </checkbox-group>
-    <view class="row h4">
-      <input class="input" type="number" name="duration" value="1"></input>周后
     </view>
-    <button form-type="submit">计算</button>
-  </form>
-  <view>拥有的晶钻数为{{diamondFuture}}</view>
+  </view>
+
+  <!-- Step 2: 每日收益 -->
+  <view class="card" wx:elif="{{step === 1}}">
+    <view class="section-title">每日收益</view>
+
+    <!-- 每日固定任务：点击卡片切换选中态 -->
+    <view class="option-list">
+      <view class="option {{formData.daily ? 'on' : ''}}" data-key="daily" bindtap="toggleOption">
+        <text>日常任务</text>
+        <text>+50/天</text>
+      </view>
+      <view class="option {{formData.ruby ? 'on' : ''}}" data-key="ruby" bindtap="toggleOption">
+        <text>红宝石</text>
+        <text>+90/天</text>
+      </view>
+      <view class="option {{formData.duer ? 'on' : ''}}" data-key="duer" bindtap="toggleOption">
+        <text>精灵杜尔</text>
+        <text>+15~30/天</text>
+      </view>
+    </view>
+
+    <!-- 每日可调数值：stepper 通过 data-field/data-delta 调整 -->
+    <view class="stepper-row">
+      <text>惊喜订单</text>
+      <view class="stepper">
+        <button class="stepper-btn" size="mini" data-field="order" data-delta="-5" data-min="0" data-max="50" bindtap="changeNumber">-</button>
+        <text class="stepper-value">{{formData.order}}</text>
+        <button class="stepper-btn" size="mini" data-field="order" data-delta="5" data-min="0" data-max="50" bindtap="changeNumber">+</button>
+      </view>
+    </view>
+
+    <view class="stepper-row">
+      <text>钻享</text>
+      <view class="stepper">
+        <button class="stepper-btn" size="mini" data-field="diamondShared" data-delta="-2" data-min="0" data-max="100" bindtap="changeNumber">-</button>
+        <text class="stepper-value">{{formData.diamondShared}}</text>
+        <button class="stepper-btn" size="mini" data-field="diamondShared" data-delta="2" data-min="0" data-max="100" bindtap="changeNumber">+</button>
+      </view>
+    </view>
+
+    <view class="stepper-row">
+      <text>钻饭</text>
+      <view class="stepper">
+        <button class="stepper-btn" size="mini" data-field="diamondFood" data-delta="-10" data-min="0" data-max="100" bindtap="changeNumber">-</button>
+        <text class="stepper-value">{{formData.diamondFood}}</text>
+        <button class="stepper-btn" size="mini" data-field="diamondFood" data-delta="10" data-min="0" data-max="100" bindtap="changeNumber">+</button>
+      </view>
+    </view>
+  </view>
+
+  <!-- Step 3: 每周收益 -->
+  <view class="card" wx:elif="{{step === 2}}">
+    <view class="section-title">每周收益</view>
+
+    <!-- 每周任务：同样采用可点击卡片 -->
+    <view class="option-list">
+      <view class="option {{formData.gachaMachine ? 'on' : ''}}" data-key="gachaMachine" bindtap="toggleOption">
+        <text>扭蛋机</text>
+        <text>+100/周</text>
+      </view>
+      <view class="option {{formData.party ? 'on' : ''}}" data-key="party" bindtap="toggleOption">
+        <text>刷派对</text>
+        <text>+50/周</text>
+      </view>
+      <view class="option {{formData.loginEveryWeek ? 'on' : ''}}" data-key="loginEveryWeek" bindtap="toggleOption">
+        <text>七日登录</text>
+        <text>+20/周</text>
+      </view>
+      <view class="option {{formData.family ? 'on' : ''}}" data-key="family" bindtap="toggleOption">
+        <text>家族订单</text>
+        <text>+50/周</text>
+      </view>
+      <view class="option {{formData.continuousLoginWeekend ? 'on' : ''}}" data-key="continuousLoginWeekend" bindtap="toggleOption">
+        <text>周末连续登录</text>
+        <text>+120/周</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部固定操作区：实时展示结果 + 上一步/下一步/计算 -->
+  <view class="footer">
+    <view class="result">预计晶钻总数: <text class="result-value">{{diamondFuture}}</text></view>
+    <view class="actions">
+      <button class="btn ghost" disabled="{{step === 0}}" bindtap="prevStep">上一步</button>
+      <!-- 前两步显示“下一步”，最后一步显示“计算” -->
+      <button class="btn primary" wx:if="{{step < 2}}" bindtap="nextStep">下一步</button>
+      <button class="btn primary" wx:else bindtap="compute">计算</button>
+    </view>
+  </view>
 </view>

@@ -13,6 +13,11 @@ Page({
     })
     this.handleQuery();
   },
+  onShow() {
+    if (typeof this.getTabBar === "function" && this.getTabBar()) {
+      this.getTabBar().setSelectedByPath(this.route);
+    }
+  },
   async handleQuery(){
     try {
       const arr = await query({'pageNum':1,'pageSize':50})

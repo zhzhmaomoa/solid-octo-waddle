@@ -1,30 +1,221 @@
-/* pages/calculator.wxss */
-.rain{
-  position: absolute;
+/* pages/calculator/calculator.wxss */
+
+/* 页面背景：使用暖色渐变，和卡片白底形成层次 */
+page {
+  background: linear-gradient(180deg, #fdf8ef 0%, #f7efe3 60%, #f3e7d8 100%);
 }
-.x{
-  padding-left: 5vw;
-  position: absolute
+
+/* 飘钻动画层：固定覆盖全屏，不影响点击事件 */
+.rain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
 }
-.h3{
-  font-size: larger;
-  margin: 2vw 0;
+
+/* 页面主容器：底部预留空间，防止内容被 fixed footer 挡住 */
+.page {
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 32rpx 28rpx calc(220rpx + 112rpx + env(safe-area-inset-bottom));
 }
-.h4{
-  font-size: large;
-  margin: 1vw 0;
+
+/* 顶部标题区 */
+.header {
+  margin-bottom: 24rpx;
 }
-.row{
-  display:flex;
+
+.title {
+  font-size: 44rpx;
+  font-weight: 700;
+  color: #25201b;
+}
+
+.subtitle {
+  margin-top: 8rpx;
+  font-size: 26rpx;
+  color: #6a6157;
+}
+
+/* 步骤进度 chips 容器 */
+.progress {
+  display: flex;
+  gap: 12rpx;
+  margin-bottom: 20rpx;
+}
+
+/* 步骤 chip 默认态 */
+.step-chip {
+  padding: 12rpx 18rpx;
+  border-radius: 999rpx;
+  font-size: 24rpx;
+  color: #7a7167;
+  background: #ede3d2;
+}
+
+/* 步骤 chip 高亮态（当前/已到达步骤） */
+.step-chip.active {
+  color: #fff;
+  background: #c67b3b;
+}
+
+/* 每一步内容卡片 */
+.card {
+  background: #fffdfa;
+  border-radius: 20rpx;
+  padding: 24rpx;
+  box-shadow: 0 8rpx 24rpx rgba(65, 37, 10, 0.08);
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #2d251f;
+  margin-bottom: 20rpx;
+}
+
+/* 基础信息输入区域 */
+.field {
+  margin-bottom: 20rpx;
+}
+
+.field-label {
+  font-size: 26rpx;
+  color: #4c4339;
+  margin-bottom: 10rpx;
+}
+
+/* 通用数字输入框 */
+.text-input {
+  height: 76rpx;
+  border-radius: 14rpx;
+  border: 2rpx solid #e3d6c3;
+  padding: 0 18rpx;
+  background: #fff;
+}
+
+/* 快捷周数按钮容器 */
+.quick-actions {
+  display: flex;
+  gap: 10rpx;
+  margin-top: 12rpx;
+}
+
+.quick-btn {
+  background: #f6ecde;
+  color: #6c5b49;
+  border-radius: 999rpx;
+  border: 0;
+}
+
+/* 任务选项列表 */
+.option-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+}
+
+/* 任务卡片默认态 */
+.option {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
+  padding: 18rpx;
+  border-radius: 14rpx;
+  border: 2rpx solid #e3d6c3;
+  color: #4a4036;
+  background: #fff;
 }
-.aside{
-  padding-left: 5vw;
+
+/* 任务卡片选中态 */
+.option.on {
+  border-color: #c67b3b;
+  background: #fff3e6;
+  color: #3a2d20;
 }
-.slider{
-  width: 200rpx;
+
+/* 数值步进行：左文字 + 右步进器 */
+.stepper-row {
+  margin-top: 18rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 28rpx;
+  color: #42382f;
 }
-.input{
-  border-bottom: solid 1rpx black;
-  width: 100rpx;
+
+.stepper {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+}
+
+/* 步进器按钮 */
+.stepper-btn {
+  width: 56rpx;
+  min-height: 56rpx;
+  line-height: 56rpx;
+  padding: 0;
+  border-radius: 12rpx;
+  border: 2rpx solid #d7c7b2;
+  background: #fff;
+  color: #5d4e3f;
+}
+
+/* 步进器中间数值 */
+.stepper-value {
+  width: 70rpx;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* 底部固定栏：结果展示 + 操作按钮 */
+.footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: calc(112rpx + env(safe-area-inset-bottom));
+  padding: 18rpx 24rpx 18rpx;
+  background: rgba(255, 250, 243, 0.96);
+  backdrop-filter: blur(8rpx);
+  border-top: 1rpx solid #ebdecf;
+}
+
+.result {
+  font-size: 28rpx;
+  color: #4c4035;
+  margin-bottom: 14rpx;
+}
+
+.result-value {
+  color: #b35f1d;
+  font-size: 34rpx;
+  font-weight: 700;
+}
+
+/* 按钮区：横向平铺 */
+.actions {
+  display: flex;
+  gap: 12rpx;
+}
+
+/* 按钮基础样式 */
+.btn {
+  flex: 1;
+  border-radius: 14rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+}
+
+/* 次级按钮（上一步） */
+.btn.ghost {
+  border: 2rpx solid #cfbea8;
+  background: #fff;
+  color: #6e5d4c;
+}
+
+/* 主按钮（下一步/计算） */
+.btn.primary {
+  border: 0;
+  background: #c67b3b;
+  color: #fff;
 }

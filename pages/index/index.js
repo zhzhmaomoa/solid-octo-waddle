@@ -63,6 +63,11 @@ Page({
   onLoad(options) {
     this.init()
   },
+  onShow() {
+    if (typeof this.getTabBar === "function" && this.getTabBar()) {
+      this.getTabBar().setSelectedByPath(this.route);
+    }
+  },
   /**初始化，为画廊设置默认的图片*/
   init() {
     this.updateImgConfigs(new Array(49).fill("_").map((i, index) => {

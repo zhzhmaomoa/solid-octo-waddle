@@ -1,4 +1,4 @@
-import {baseUrl} from "../../env.js"
+import {assetsUrl} from "../../env.js"
 let width = 0;
 let height = 0;
 let canvas = undefined;
@@ -35,7 +35,7 @@ Component({
       imgTemp.onload = ()=>{
         img  = imgTemp
       }
-      imgTemp.src = baseUrl+'/redemptionImg/diamond.png'
+      imgTemp.src = assetsUrl+'/diamond.png'
     },
     render(){
       if(playGround){

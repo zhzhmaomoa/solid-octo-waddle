@@ -7,6 +7,7 @@
     scale="4"
     min-scale="3"
     max-scale="10"
+    enable-poi="{{false}}"
     markers="{{markers}}"
   ></map>
 </view>

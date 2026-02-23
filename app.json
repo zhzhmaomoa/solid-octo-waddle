@@ -5,6 +5,11 @@
     "pages/map/map"
   ],
   "tabBar": {
+    "custom": true,
+    "color": "#6B7280",
+    "selectedColor": "#111111",
+    "backgroundColor": "#FFF8E6",
+    "borderStyle": "white",
     "list": [
       {
         "pagePath": "pages/index/index",
