@@ -1,9 +1,7 @@
 <!--pages/calculator.wxml-->
-<!-- 飘钻动画组件：计算完成后由 js 主动触发 render -->
-<diamond-rain id="rain" class="rain" diamondFuture="{{diamondFuture}}"></diamond-rain>
 
 <!-- 页面主容器 -->
-<view class="page">
+<view class="page" style="padding-top: {{navSafeTop}}px;">
   <!-- 顶部标题区域 -->
   <view class="header">
     <view class="title">晶钻收益计算器</view>
@@ -129,3 +127,5 @@
     </view>
   </view>
 </view>
+<!-- 飘钻动画组件：计算完成后由 js 主动触发 render -->
+<diamond-rain id="rain" class="rain" diamondFuture="{{diamondFuture}}"></diamond-rain>

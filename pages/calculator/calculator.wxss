@@ -8,7 +8,10 @@ page {
 /* 飘钻动画层：固定覆盖全屏，不影响点击事件 */
 .rain {
   position: fixed;
-  inset: 0;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: calc(112rpx + env(safe-area-inset-bottom));
   pointer-events: none;
 }
 
@@ -16,7 +19,7 @@ page {
 .page {
   min-height: 100vh;
   box-sizing: border-box;
-  padding: 32rpx 28rpx calc(220rpx + 112rpx + env(safe-area-inset-bottom));
+  padding: 0 28rpx calc(220rpx + 112rpx + env(safe-area-inset-bottom));
 }
 
 /* 顶部标题区 */

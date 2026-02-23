@@ -19,7 +19,10 @@ Component({
     }
   },
   properties:{
-    diamondFuture:''
+    diamondFuture: {
+      type: Number,
+      value: 0
+    }
   },
   methods: {
     init(res) {
@@ -27,7 +30,7 @@ Component({
       height = res[0].height;
       canvas = res[0].node
       ctx = canvas.getContext('2d')
-      const dpr = wx.getSystemInfoSync().pixelRatio
+      const dpr = wx.getWindowInfo().pixelRatio
       canvas.width = width * dpr
       canvas.height = height * dpr
       ctx.scale(dpr,dpr)

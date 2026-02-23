@@ -1,5 +1,6 @@
 Page({
   data: {
+    navSafeTop:88,
     // 当前步骤：0=基础信息，1=每日收益，2=每周收益
     step: 0,
     // 最终计算结果（预计晶钻总数）
@@ -32,6 +33,11 @@ Page({
   onLoad() {
     // 获取飘钻组件实例，用于计算后触发动画
     this.rain = this.selectComponent("#rain");
+    const app = getApp();
+    //获取顶部安全距离
+    this.setData({
+      navSafeTop: app.globalData.navSafeTop || 88
+    });
   },
   onShow() {
     if (typeof this.getTabBar === "function" && this.getTabBar()) {
