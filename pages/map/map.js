@@ -15,7 +15,10 @@ Page({
   },
   onShow() {
     if (typeof this.getTabBar === "function" && this.getTabBar()) {
-      this.getTabBar().setSelectedByPath(this.route);
+      const tabBar = this.getTabBar();
+      tabBar.setSelectedByPath(this.route);
+      const { windowWidth, windowHeight } = wx.getWindowInfo();
+      tabBar.setHidden(windowWidth > windowHeight);
     }
   },
   async handleQuery(){
@@ -45,11 +48,8 @@ Page({
     }
   },
   onResize(res) {
-    // console.log(res)
-    if(res.size.windowWidth>res.size.windowHeight){
-      wx.hideTabBar()
-    }else{
-      wx.showTabBar()
+    if (typeof this.getTabBar === "function" && this.getTabBar()) {
+      this.getTabBar().setHidden(res.size.windowWidth > res.size.windowHeight);
     }
   }
 })

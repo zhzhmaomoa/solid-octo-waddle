@@ -32,6 +32,11 @@ Component({
       this.setData({
         selected: selected === -1 ? 0 : selected
       });
+    },
+    setHidden(hidden) {
+      this.setData({
+        hidden: !!hidden
+      });
     }
   },
   lifetimes: {

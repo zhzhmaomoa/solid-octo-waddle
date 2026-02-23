@@ -65,7 +65,10 @@ Page({
   },
   onShow() {
     if (typeof this.getTabBar === "function" && this.getTabBar()) {
-      this.getTabBar().setSelectedByPath(this.route);
+      const tabBar = this.getTabBar();
+      tabBar.setSelectedByPath(this.route);
+      const { windowWidth, windowHeight } = wx.getWindowInfo();
+      tabBar.setHidden(windowWidth > windowHeight);
     }
   },
   /**初始化，为画廊设置默认的图片*/
@@ -241,11 +244,9 @@ Page({
   },
 
   onResize(res) {
-    //  横屏模式隐藏菜单
-    if (res.size.windowWidth > res.size.windowHeight) {
-      wx.hideTabBar()
-    } else {
-      wx.showTabBar()
+    if (typeof this.getTabBar === "function" && this.getTabBar()) {
+      // 横屏模式仅隐藏自定义 tabbar，避免真机触发系统 tabbar 混显
+      this.getTabBar().setHidden(res.size.windowWidth > res.size.windowHeight);
     }
   },
   /**每张图片加载完毕后翻转 */

@@ -35,7 +35,15 @@ Page({
   },
   onShow() {
     if (typeof this.getTabBar === "function" && this.getTabBar()) {
-      this.getTabBar().setSelectedByPath(this.route);
+      const tabBar = this.getTabBar();
+      tabBar.setSelectedByPath(this.route);
+      const { windowWidth, windowHeight } = wx.getWindowInfo();
+      tabBar.setHidden(windowWidth > windowHeight);
+    }
+  },
+  onResize(res) {
+    if (typeof this.getTabBar === "function" && this.getTabBar()) {
+      this.getTabBar().setHidden(res.size.windowWidth > res.size.windowHeight);
     }
   },
 
