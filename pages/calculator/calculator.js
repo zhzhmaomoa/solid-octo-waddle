@@ -33,7 +33,6 @@ Page({
     // 获取飘钻组件实例，用于计算后触发动画
     this.rain = this.selectComponent("#rain");
   },
-    let diamondFuture = 0;
   onShow() {
     if (typeof this.getTabBar === "function" && this.getTabBar()) {
       this.getTabBar().setSelectedByPath(this.route);
