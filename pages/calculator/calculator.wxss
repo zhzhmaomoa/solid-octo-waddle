@@ -2,7 +2,25 @@
 
 /* 页面背景：使用暖色渐变，和卡片白底形成层次 */
 page {
-  background: linear-gradient(180deg, #fdf8ef 0%, #f7efe3 60%, #f3e7d8 100%);
+  background-color: #f2ead8;
+  background-image:
+    radial-gradient(circle at 12% 9%, rgba(255, 251, 243, 0.76) 0%, rgba(255, 251, 243, 0) 24%),
+    radial-gradient(circle at 84% 14%, rgba(227, 205, 170, 0.26) 0%, rgba(227, 205, 170, 0) 32%),
+    repeating-linear-gradient(
+      0deg,
+      rgba(182, 159, 125, 0) 0px,
+      rgba(182, 159, 125, 0) 38px,
+      rgba(182, 159, 125, 0.26) 38px,
+      rgba(182, 159, 125, 0.26) 40px
+    ),
+    repeating-linear-gradient(
+      -14deg,
+      rgba(145, 123, 90, 0.025) 0px,
+      rgba(145, 123, 90, 0.025) 1px,
+      rgba(255, 255, 255, 0) 1px,
+      rgba(255, 255, 255, 0) 8px
+    ),
+    linear-gradient(180deg, #f8f3e8 0%, #efe3cf 55%, #e6d6bc 100%);
 }
 
 /* 飘钻动画层：固定覆盖全屏，不影响点击事件 */

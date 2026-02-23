@@ -34,6 +34,7 @@
     "navigationBarTitleText": "title",
     "backgroundColor": "#eeeeee",
     "backgroundTextStyle": "light",
+    "disableScroll":true,
     "enablePullDownRefresh": false
   },
   "usingComponents": {}
